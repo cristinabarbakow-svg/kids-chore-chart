@@ -10,29 +10,35 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
             margin: 0;
-            padding: 20px;
-            min-height: 100vh;
+            padding: 10px;
+            height: auto;
+            overflow: visible;
+            touch-action: manipulation;
+            pointer-events: auto;
         }
         
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 100%;
+            margin: 0;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            overflow: visible;
+            position: relative;
+            z-index: 1;
+            pointer-events: auto;
         }
         
         .header {
             background: linear-gradient(45deg, #ff6b6b, #feca57);
             color: white;
-            padding: 30px;
+            padding: 15px;
             text-align: center;
         }
         
         .header h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 1.8em;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
@@ -43,15 +49,20 @@
         
         .kid-tab {
             flex: 1;
-            padding: 20px;
+            padding: 15px 10px;
             text-align: center;
             color: white;
             cursor: pointer;
-            font-size: 1.3em;
+            font-size: 1.1em;
             font-weight: bold;
             transition: all 0.3s ease;
             border: none;
             background: #34495e;
+            position: relative;
+            z-index: 100;
+            pointer-events: auto;
+            touch-action: manipulation;
+            user-select: none;
         }
         
         .kid-tab.active {
@@ -104,12 +115,17 @@
         }
         
         .pay-btn, .clear-btn, .reset-btn {
-            padding: 10px 20px;
+            padding: 12px 16px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 0.9em;
             font-weight: bold;
+            pointer-events: auto;
+            touch-action: manipulation;
+            z-index: 100;
+            position: relative;
+            margin: 5px;
         }
         
         .pay-btn {
@@ -149,7 +165,9 @@
         }
         
         .content {
-            padding: 30px;
+            padding: 15px;
+            max-height: none;
+            overflow: visible;
         }
         
         .day-section {
@@ -208,10 +226,14 @@
         }
         
         .chore-checkbox {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             margin-right: 15px;
             cursor: pointer;
+            z-index: 1000;
+            position: relative;
+            pointer-events: auto;
+            touch-action: manipulation;
         }
         
         .chore-text {
@@ -274,7 +296,7 @@
                 👦 A1 - $<span id="kid1-total">0.00</span>
             </button>
             <button class="kid-tab" onclick="switchKid('kid2')" id="tab-kid2">
-                👦 A2 - $<span id="kid2-total">0.00</span>
+                👧 A2 - $<span id="kid2-total">0.00</span>
             </button>
         </div>
         
@@ -288,7 +310,7 @@
                     <p>Unpaid: $<span id="kid1-unpaid">0.00</span></p>
                 </div>
                 <div class="total-item">
-                    <h4> 👦A2 Totals</h4>
+                    <h4>👧 A2 Totals</h4>
                     <p>This Week: $<span id="kid2-week-earned">0.00</span></p>
                     <p>All Time: $<span id="kid2-cumulative">0.00</span></p>
                     <p>Unpaid: $<span id="kid2-unpaid">0.00</span></p>
@@ -334,7 +356,7 @@
         <!-- Kid 2 Content -->
         <div class="kid-content" id="kid2-content">
             <div class="earnings-display">
-                <div> 👦 A2 Week Total: $<span id="kid2-week-total">0.00</span></div>
+                <div>👧 A2 Week Total: $<span id="kid2-week-total">0.00</span></div>
                 <div style="font-size: 0.8em; margin-top: 10px;">
                     Possible This Week: $<span id="kid2-max-possible">0.00</span> | 
                     Progress: <span id="kid2-progress-percent">0</span>%
@@ -643,6 +665,20 @@
         }
         
         document.addEventListener('DOMContentLoaded', function() {
+            // Force enable interactions for iframe embedding
+            document.body.style.pointerEvents = 'auto';
+            document.body.style.touchAction = 'manipulation';
+            
+            // Add click event delegation for better iframe compatibility
+            document.addEventListener('click', function(e) {
+                e.stopPropagation();
+            }, true);
+            
+            // Add touch events for mobile/tablet compatibility
+            document.addEventListener('touchstart', function(e) {
+                e.stopPropagation();
+            }, true);
+            
             initializeDays();
             attachEventListeners();
             updateTotals();
