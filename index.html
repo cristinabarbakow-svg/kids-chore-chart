@@ -67,6 +67,70 @@
             background: #27ae60;
         }
         
+        .totals-panel {
+            background: linear-gradient(45deg, #a8edea, #fed6e3);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .totals-grid {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .total-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-width: 200px;
+            margin: 10px;
+        }
+        
+        .payment-section {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .payment-controls {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .pay-btn, .clear-btn, .reset-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        
+        .pay-btn {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .clear-btn {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .reset-btn {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .pay-btn:hover { background: #219a52; }
+        .clear-btn:hover { background: #d68910; }
+        .reset-btn:hover { background: #c0392b; }
+        
         .earnings-display {
             background: #2ecc71;
             color: white;
@@ -178,47 +242,14 @@
             text-align: center;
         }
         
-        .comparison-panel {
-            background: linear-gradient(45deg, #a8edea, #fed6e3);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px;
-            text-align: center;
-        }
-        
-        .kid-comparison {
-            display: flex;
-            justify-content: space-around;
-            margin: 15px 0;
-        }
-        
-        .kid-stats {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            min-width: 200px;
-        }
-        
-        .reset-btn {
-            background: #e74c3c;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            margin: 10px;
-        }
-        
-        .reset-btn:hover {
-            background: #c0392b;
-        }
-        
         @media (max-width: 768px) {
-            .kid-comparison {
+            .totals-grid {
                 flex-direction: column;
-                gap: 15px;
+            }
+            
+            .payment-controls {
+                flex-direction: column;
+                align-items: center;
             }
             
             .day-header {
@@ -243,7 +274,7 @@
                 👦 A1 - $<span id="kid1-total">0.00</span>
             </button>
             <button class="kid-tab" onclick="switchKid('kid2')" id="tab-kid2">
-                👧 A2 - $<span id="kid2-total">0.00</span>
+                👦 A2 - $<span id="kid2-total">0.00</span>
             </button>
         </div>
         
@@ -257,7 +288,7 @@
                     <p>Unpaid: $<span id="kid1-unpaid">0.00</span></p>
                 </div>
                 <div class="total-item">
-                    <h4>👧 A2 Totals</h4>
+                    <h4> 👦A2 Totals</h4>
                     <p>This Week: $<span id="kid2-week-earned">0.00</span></p>
                     <p>All Time: $<span id="kid2-cumulative">0.00</span></p>
                     <p>Unpaid: $<span id="kid2-unpaid">0.00</span></p>
@@ -288,157 +319,37 @@
                 </div>
             </div>
             
-            <div class="content">
-                <!-- Monday -->
-                <div class="day-section">
-                    <div class="day-header">
-                        <span>Monday</span>
-                        <span class="day-total">$<span class="daily-total" data-day="monday" data-kid="kid1">0.00</span></span>
-                    </div>
-                    <div class="chore-list">
-                        <div class="chore-group">
-                            <h4>⭐ Morning Tasks (25¢ each)</h4>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="monday" data-kid="kid1">
-                                <span class="chore-text">Make your bed</span>
-                                <span class="chore-value">25¢</span>
-                            </div>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="monday" data-kid="kid1">
-                                <span class="chore-text">Put dirty clothes in hamper</span>
-                                <span class="chore-value">25¢</span>
-                            </div>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="monday" data-kid="kid1">
-                                <span class="chore-text">Pack your backpack</span>
-                                <span class="chore-value">25¢</span>
-                            </div>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="monday" data-kid="kid1">
-                                <span class="chore-text">Feed pets/water plants</span>
-                                <span class="chore-value">25¢</span>
-                            </div>
-                        </div>
-                        
-                        <div class="chore-group">
-                            <h4>⭐⭐ After School & Kitchen (50¢ each)</h4>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="monday" data-kid="kid1">
-                                <span class="chore-text">Hang up backpack & coat</span>
-                                <span class="chore-value">50¢</span>
-                            </div>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="monday" data-kid="kid1">
-                                <span class="chore-text">Set the table</span>
-                                <span class="chore-value">50¢</span>
-                            </div>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="monday" data-kid="kid1">
-                                <span class="chore-text">Clear dishes & wipe table</span>
-                                <span class="chore-value">50¢</span>
-                            </div>
-                        </div>
-                        
-                        <div class="chore-group">
-                            <h4>⭐⭐⭐ Big Chores ($1.00 each)</h4>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="1.00" data-day="monday" data-kid="kid1">
-                                <span class="chore-text">Vacuum bedroom</span>
-                                <span class="chore-value">$1.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Add more days for Kid 1... -->
-                <div class="weekly-bonus">
-                    <h3>🏆 Weekly Bonus Goals 🏆</h3>
-                    <p><strong>Complete 20+ chores this week = $3.00 bonus!</strong></p>
-                    <p><strong>Do chores cheerfully all week = $2.00 bonus!</strong></p>
-                    <p>Chores completed: <span class="chore-count" data-kid="kid1">0</span></p>
-                </div>
+            <div class="content" id="kid1-days">
+                <!-- Days will be generated by JavaScript -->
+            </div>
+            
+            <div class="weekly-bonus">
+                <h3>🏆 Weekly Bonus Goals 🏆</h3>
+                <p><strong>Complete 20+ chores this week = $3.00 bonus!</strong></p>
+                <p><strong>Do chores cheerfully all week = $2.00 bonus!</strong></p>
+                <p>Chores completed: <span class="chore-count" data-kid="kid1">0</span></p>
             </div>
         </div>
         
         <!-- Kid 2 Content -->
         <div class="kid-content" id="kid2-content">
             <div class="earnings-display">
-                <div>👧 A2 Week Total: $<span id="kid2-week-total">0.00</span></div>
+                <div> 👦 A2 Week Total: $<span id="kid2-week-total">0.00</span></div>
                 <div style="font-size: 0.8em; margin-top: 10px;">
                     Possible This Week: $<span id="kid2-max-possible">0.00</span> | 
                     Progress: <span id="kid2-progress-percent">0</span>%
                 </div>
             </div>
             
-            <div class="content">
-                <!-- Monday -->
-                <div class="day-section">
-                    <div class="day-header">
-                        <span>Monday</span>
-                        <span class="day-total">$<span class="daily-total" data-day="monday" data-kid="kid2">0.00</span></span>
-                    </div>
-                    <div class="chore-list">
-                        <div class="chore-group">
-                            <h4>⭐ Morning Tasks (25¢ each)</h4>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="monday" data-kid="kid2">
-                                <span class="chore-text">Make your bed</span>
-                                <span class="chore-value">25¢</span>
-                            </div>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="monday" data-kid="kid2">
-                                <span class="chore-text">Put dirty clothes in hamper</span>
-                                <span class="chore-value">25¢</span>
-                            </div>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="monday" data-kid="kid2">
-                                <span class="chore-text">Pack your backpack</span>
-                                <span class="chore-value">25¢</span>
-                            </div>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="monday" data-kid="kid2">
-                                <span class="chore-text">Feed pets/water plants</span>
-                                <span class="chore-value">25¢</span>
-                            </div>
-                        </div>
-                        
-                        <div class="chore-group">
-                            <h4>⭐⭐ After School & Kitchen (50¢ each)</h4>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="monday" data-kid="kid2">
-                                <span class="chore-text">Hang up backpack & coat</span>
-                                <span class="chore-value">50¢</span>
-                            </div>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="monday" data-kid="kid2">
-                                <span class="chore-text">Set the table</span>
-                                <span class="chore-value">50¢</span>
-                            </div>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="monday" data-kid="kid2">
-                                <span class="chore-text">Clear dishes & wipe table</span>
-                                <span class="chore-value">50¢</span>
-                            </div>
-                        </div>
-                        
-                        <div class="chore-group">
-                            <h4>⭐⭐⭐ Big Chores ($1.00 each)</h4>
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" data-value="1.00" data-day="monday" data-kid="kid2">
-                                <span class="chore-text">Vacuum bedroom</span>
-                                <span class="chore-value">$1.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Add more days for Kid 2... -->
-                <div class="weekly-bonus">
-                    <h3>🏆 Weekly Bonus Goals 🏆</h3>
-                    <p><strong>Complete 20+ chores this week = $3.00 bonus!</strong></p>
-                    <p><strong>Do chores cheerfully all week = $2.00 bonus!</strong></p>
-                    <p>Chores completed: <span class="chore-count" data-kid="kid2">0</span></p>
-                </div>
+            <div class="content" id="kid2-days">
+                <!-- Days will be generated by JavaScript -->
+            </div>
+            
+            <div class="weekly-bonus">
+                <h3>🏆 Weekly Bonus Goals 🏆</h3>
+                <p><strong>Complete 20+ chores this week = $3.00 bonus!</strong></p>
+                <p><strong>Do chores cheerfully all week = $2.00 bonus!</strong></p>
+                <p>Chores completed: <span class="chore-count" data-kid="kid2">0</span></p>
             </div>
         </div>
         
@@ -456,8 +367,90 @@
         };
         let currentKid = 'kid1';
         
+        const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        
+        const choreCategories = [
+            {
+                name: '⭐ Morning Tasks (25¢ each)',
+                chores: [
+                    { text: 'Make your bed', value: 0.25 },
+                    { text: 'Put dirty clothes in hamper', value: 0.25 },
+                    { text: 'Pack your backpack', value: 0.25 },
+                    { text: 'Feed pets/water plants', value: 0.25 }
+                ]
+            },
+            {
+                name: '⭐⭐ After School & Kitchen (50¢ each)',
+                chores: [
+                    { text: 'Hang up backpack & coat', value: 0.50 },
+                    { text: 'Set the table', value: 0.50 },
+                    { text: 'Clear dishes & wipe table', value: 0.50 }
+                ]
+            },
+            {
+                name: '⭐⭐⭐ Big Chores ($1.00 each)',
+                chores: [
+                    { text: 'Vacuum bedroom', value: 1.00 },
+                    { text: 'Take out trash', value: 1.00 }
+                ]
+            }
+        ];
+        
+        function generateDaySection(day, kidId) {
+            const dayLower = day.toLowerCase();
+            let choreIndex = 0;
+            
+            let html = `
+                <div class="day-section">
+                    <div class="day-header">
+                        <span>${day}</span>
+                        <span class="day-total">$<span class="daily-total" data-day="${dayLower}" data-kid="${kidId}">0.00</span></span>
+                    </div>
+                    <div class="chore-list">
+            `;
+            
+            choreCategories.forEach(category => {
+                html += `
+                    <div class="chore-group">
+                        <h4>${category.name}</h4>
+                `;
+                
+                category.chores.forEach(chore => {
+                    html += `
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="${chore.value}" data-day="${dayLower}" data-kid="${kidId}" data-index="${choreIndex}">
+                            <span class="chore-text">${chore.text}</span>
+                            <span class="chore-value">${chore.value >= 1 ? '$' + chore.value.toFixed(2) : Math.round(chore.value * 100) + '¢'}</span>
+                        </div>
+                    `;
+                    choreIndex++;
+                });
+                
+                html += `</div>`;
+            });
+            
+            html += `
+                    </div>
+                </div>
+            `;
+            
+            return html;
+        }
+        
+        function initializeDays() {
+            const kid1Container = document.getElementById('kid1-days');
+            const kid2Container = document.getElementById('kid2-days');
+            
+            kid1Container.innerHTML = '';
+            kid2Container.innerHTML = '';
+            
+            days.forEach(day => {
+                kid1Container.innerHTML += generateDaySection(day, 'kid1');
+                kid2Container.innerHTML += generateDaySection(day, 'kid2');
+            });
+        }
+        
         function switchKid(kidId) {
-            // Hide all content
             document.querySelectorAll('.kid-content').forEach(content => {
                 content.classList.remove('active');
             });
@@ -465,10 +458,28 @@
                 tab.classList.remove('active');
             });
             
-            // Show selected content
             document.getElementById(kidId + '-content').classList.add('active');
             document.getElementById('tab-' + kidId).classList.add('active');
             currentKid = kidId;
+        }
+        
+        function updateDayTotals() {
+            days.forEach(day => {
+                const dayLower = day.toLowerCase();
+                ['kid1', 'kid2'].forEach(kidId => {
+                    let dayTotal = 0;
+                    document.querySelectorAll(`[data-day="${dayLower}"][data-kid="${kidId}"]`).forEach(checkbox => {
+                        if (checkbox.checked) {
+                            dayTotal += parseFloat(checkbox.dataset.value);
+                        }
+                    });
+                    
+                    const dayTotalElement = document.querySelector(`.daily-total[data-day="${dayLower}"][data-kid="${kidId}"]`);
+                    if (dayTotalElement) {
+                        dayTotalElement.textContent = dayTotal.toFixed(2);
+                    }
+                });
+            });
         }
         
         function updateTotals() {
@@ -477,7 +488,6 @@
                 let maxPossible = 0;
                 let choreCount = 0;
                 
-                // Calculate totals for this kid
                 document.querySelectorAll(`[data-kid="${kidId}"]`).forEach(checkbox => {
                     const value = parseFloat(checkbox.dataset.value);
                     maxPossible += value;
@@ -488,42 +498,41 @@
                     }
                 });
                 
-                // Add bonus if applicable
                 if (choreCount >= 20) {
                     weekTotal += 3.00;
+                    maxPossible += 3.00;
                 }
                 
-                // Update week earned
                 totalData[kidId].weekEarned = weekTotal;
                 totalData[kidId].unpaid = weekTotal;
                 
-                // Update displays
                 document.getElementById(`${kidId}-week-total`).textContent = weekTotal.toFixed(2);
                 document.getElementById(`${kidId}-total`).textContent = weekTotal.toFixed(2);
                 document.getElementById(`${kidId}-max-possible`).textContent = maxPossible.toFixed(2);
-                document.getElementById(`${kidId}-progress-percent`).textContent = Math.round((weekTotal / maxPossible) * 100);
+                document.getElementById(`${kidId}-progress-percent`).textContent = maxPossible > 0 ? Math.round((weekTotal / maxPossible) * 100) : 0;
                 document.querySelector(`.chore-count[data-kid="${kidId}"]`).textContent = choreCount;
                 
-                // Update money tracking displays
                 document.getElementById(`${kidId}-week-earned`).textContent = totalData[kidId].weekEarned.toFixed(2);
                 document.getElementById(`${kidId}-cumulative`).textContent = totalData[kidId].cumulative.toFixed(2);
                 document.getElementById(`${kidId}-unpaid`).textContent = totalData[kidId].unpaid.toFixed(2);
             });
+            
+            updateDayTotals();
         }
         
         function payKid(kidId) {
             const unpaidAmount = totalData[kidId].unpaid;
             if (unpaidAmount > 0) {
-                const kidName = kidId === 'kid1' ? 'Kid 1' : 'Kid 2';
-                if (confirm(`Pay ${kidName} ${unpaidAmount.toFixed(2)}?`)) {
+                const kidName = kidId === 'kid1' ? 'A1' : 'A2';
+                if (confirm(`Pay ${kidName} $${unpaidAmount.toFixed(2)}?`)) {
                     totalData[kidId].cumulative += unpaidAmount;
                     totalData[kidId].unpaid = 0;
                     updateTotals();
-                    alert(`💰 Paid ${kidName} ${unpaidAmount.toFixed(2)}! Great job!`);
+                    alert(`💰 Paid ${kidName} $${unpaidAmount.toFixed(2)}! Great job!`);
                     saveProgress();
                 }
             } else {
-                const kidName = kidId === 'kid1' ? 'Kid 1' : 'Kid 2';
+                const kidName = kidId === 'kid1' ? 'A1' : 'A2';
                 alert(`${kidName} has no unpaid earnings right now.`);
             }
         }
@@ -534,7 +543,7 @@
             const totalUnpaid = kid1Unpaid + kid2Unpaid;
             
             if (totalUnpaid > 0) {
-                if (confirm(`Pay both kids a total of ${totalUnpaid.toFixed(2)}?\nKid 1: ${kid1Unpaid.toFixed(2)}\nKid 2: ${kid2Unpaid.toFixed(2)}`)) {
+                if (confirm(`Pay both kids a total of $${totalUnpaid.toFixed(2)}?\nA1: $${kid1Unpaid.toFixed(2)}\nA2: $${kid2Unpaid.toFixed(2)}`)) {
                     totalData.kid1.cumulative += kid1Unpaid;
                     totalData.kid2.cumulative += kid2Unpaid;
                     totalData.kid1.unpaid = 0;
@@ -549,15 +558,13 @@
         }
         
         function clearWeeklyEarnings(kidId) {
-            const kidName = kidId === 'kid1' ? 'Kid 1' : 'Kid 2';
+            const kidName = kidId === 'kid1' ? 'A1' : 'A2';
             if (confirm(`Clear this week's earnings for ${kidName}? This will uncheck all their chores and reset their week total to $0.00.`)) {
-                // Clear checkboxes for this kid
                 document.querySelectorAll(`[data-kid="${kidId}"]`).forEach(checkbox => {
                     checkbox.checked = false;
                     checkbox.parentElement.classList.remove('completed');
                 });
                 
-                // Reset their week data
                 totalData[kidId].weekEarned = 0;
                 totalData[kidId].unpaid = 0;
                 
@@ -568,40 +575,45 @@
         }
         
         function saveProgress() {
+            const checkboxStates = {};
+            document.querySelectorAll('.chore-checkbox').forEach(checkbox => {
+                const key = `${checkbox.dataset.kid}-${checkbox.dataset.day}-${checkbox.dataset.index}`;
+                checkboxStates[key] = checkbox.checked;
+            });
+            
             const saveData = {
-                choreData: choreData,
+                checkboxStates: checkboxStates,
                 totalData: totalData
             };
-            localStorage.setItem('kidChoreProgress', JSON.stringify(saveData));
+            
+            // Store in a JavaScript variable instead of localStorage
+            window.choreProgress = saveData;
             alert('Progress saved for both kids! 💾');
         }
         
         function loadProgress() {
-            const saved = localStorage.getItem('kidChoreProgress');
-            if (saved) {
-                const data = JSON.parse(saved);
-                choreData = data.choreData || { kid1: {}, kid2: {} };
+            if (window.choreProgress) {
+                const data = window.choreProgress;
                 totalData = data.totalData || { 
                     kid1: { cumulative: 0, unpaid: 0, weekEarned: 0 }, 
                     kid2: { cumulative: 0, unpaid: 0, weekEarned: 0 } 
                 };
                 
-                // Restore checkboxes
-                document.querySelectorAll('.chore-checkbox').forEach((checkbox, index) => {
-                    const kid = checkbox.dataset.kid;
-                    const choreKey = `${kid}-${index}`;
-                    if (choreData[kid] && choreData[kid][choreKey]) {
-                        checkbox.checked = true;
-                        checkbox.parentElement.classList.add('completed');
-                    }
-                });
+                if (data.checkboxStates) {
+                    document.querySelectorAll('.chore-checkbox').forEach(checkbox => {
+                        const key = `${checkbox.dataset.kid}-${checkbox.dataset.day}-${checkbox.dataset.index}`;
+                        if (data.checkboxStates[key]) {
+                            checkbox.checked = true;
+                            checkbox.parentElement.classList.add('completed');
+                        }
+                    });
+                }
                 updateTotals();
             }
         }
         
         function resetWeek() {
             if (confirm('Are you sure you want to start a new week for BOTH kids? This will clear all checkmarks but keep their cumulative totals.')) {
-                choreData = { kid1: {}, kid2: {} };
                 totalData.kid1.weekEarned = 0;
                 totalData.kid1.unpaid = 0;
                 totalData.kid2.weekEarned = 0;
@@ -617,24 +629,22 @@
             }
         }
         
-        // Add event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.chore-checkbox').forEach((checkbox, index) => {
+        function attachEventListeners() {
+            document.querySelectorAll('.chore-checkbox').forEach(checkbox => {
                 checkbox.addEventListener('change', function() {
-                    const kid = this.dataset.kid;
-                    const choreKey = `${kid}-${index}`;
-                    choreData[kid][choreKey] = this.checked;
-                    
                     if (this.checked) {
                         this.parentElement.classList.add('completed');
                     } else {
                         this.parentElement.classList.remove('completed');
                     }
-                    
                     updateTotals();
                 });
             });
-            
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDays();
+            attachEventListeners();
             updateTotals();
             loadProgress();
         });
