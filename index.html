@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Chore Chart - Earn Your Way!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .earnings-display {
+            background: #2ecc71;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .day-section {
+            background: #f8f9fa;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .day-header {
+            background: #3498db;
+            color: white;
+            padding: 15px 20px;
+            margin: 0;
+            font-size: 1.3em;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .day-total {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        
+        .chore-list {
+            padding: 20px;
+        }
+        
+        .chore-group {
+            margin-bottom: 25px;
+        }
+        
+        .chore-group h4 {
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .chore-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 8px 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .chore-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        
+        .chore-checkbox {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        
+        .chore-text {
+            flex-grow: 1;
+            font-size: 1.1em;
+        }
+        
+        .chore-value {
+            font-weight: bold;
+            color: #27ae60;
+            font-size: 1.2em;
+            min-width: 60px;
+            text-align: right;
+        }
+        
+        .completed {
+            text-decoration: line-through;
+            opacity: 0.6;
+            background: #d5f5d5 !important;
+        }
+        
+        .weekly-bonus {
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .reset-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 10px;
+        }
+        
+        .reset-btn:hover {
+            background: #c0392b;
+        }
+        
+        @media (max-width: 768px) {
+            .day-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💰 Kids Chore Chart - Earn Your Way! 💰</h1>
+        </div>
+        
+        <div class="earnings-display">
+            <div>Week Total: $<span id="weekTotal">0.00</span></div>
+            <div style="font-size: 0.8em; margin-top: 10px;">
+                Possible This Week: $<span id="maxPossible">0.00</span> | 
+                Progress: <span id="progressPercent">0</span>%
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="day-section">
+                <div class="day-header">
+                    <span>Monday</span>
+                    <span class="day-total">$<span class="daily-total" data-day="monday">0.00</span></span>
+                </div>
+                <div class="chore-list">
+                    <div class="chore-group">
+                        <h4>⭐ Morning Tasks (25¢ each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="monday">
+                            <span class="chore-text">Make your bed</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="monday">
+                            <span class="chore-text">Put dirty clothes in hamper</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="monday">
+                            <span class="chore-text">Pack your backpack</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="monday">
+                            <span class="chore-text">Feed pets/water plants</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chore-group">
+                        <h4>⭐⭐ After School & Kitchen (50¢ each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="monday">
+                            <span class="chore-text">Hang up backpack & coat</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="monday">
+                            <span class="chore-text">Set the table</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="monday">
+                            <span class="chore-text">Clear dishes & wipe table</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chore-group">
+                        <h4>⭐⭐⭐ Big Chores ($1.00 each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="1.00" data-day="monday">
+                            <span class="chore-text">Vacuum bedroom</span>
+                            <span class="chore-value">$1.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tuesday -->
+            <div class="day-section">
+                <div class="day-header">
+                    <span>Tuesday</span>
+                    <span class="day-total">$<span class="daily-total" data-day="tuesday">0.00</span></span>
+                </div>
+                <div class="chore-list">
+                    <div class="chore-group">
+                        <h4>⭐ Morning Tasks (25¢ each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="tuesday">
+                            <span class="chore-text">Make your bed</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="tuesday">
+                            <span class="chore-text">Put dirty clothes in hamper</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="tuesday">
+                            <span class="chore-text">Pack your backpack</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="tuesday">
+                            <span class="chore-text">Feed pets/water plants</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chore-group">
+                        <h4>⭐⭐ After School & Kitchen (50¢ each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="tuesday">
+                            <span class="chore-text">Hang up backpack & coat</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="tuesday">
+                            <span class="chore-text">Set the table</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="tuesday">
+                            <span class="chore-text">Clear dishes & wipe table</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chore-group">
+                        <h4>⭐⭐⭐ Big Chores ($1.00 each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="1.00" data-day="tuesday">
+                            <span class="chore-text">Help with laundry</span>
+                            <span class="chore-value">$1.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Wednesday -->
+            <div class="day-section">
+                <div class="day-header">
+                    <span>Wednesday</span>
+                    <span class="day-total">$<span class="daily-total" data-day="wednesday">0.00</span></span>
+                </div>
+                <div class="chore-list">
+                    <div class="chore-group">
+                        <h4>⭐ Morning Tasks (25¢ each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="wednesday">
+                            <span class="chore-text">Make your bed</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="wednesday">
+                            <span class="chore-text">Put dirty clothes in hamper</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="wednesday">
+                            <span class="chore-text">Pack your backpack</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="wednesday">
+                            <span class="chore-text">Feed pets/water plants</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chore-group">
+                        <h4>⭐⭐ After School & Kitchen (50¢ each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="wednesday">
+                            <span class="chore-text">Hang up backpack & coat</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="wednesday">
+                            <span class="chore-text">Set the table</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="wednesday">
+                            <span class="chore-text">Clear dishes & wipe table</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chore-group">
+                        <h4>⭐⭐⭐ Big Chores ($1.00 each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="1.00" data-day="wednesday">
+                            <span class="chore-text">Take trash to curb</span>
+                            <span class="chore-value">$1.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Thursday -->
+            <div class="day-section">
+                <div class="day-header">
+                    <span>Thursday</span>
+                    <span class="day-total">$<span class="daily-total" data-day="thursday">0.00</span></span>
+                </div>
+                <div class="chore-list">
+                    <div class="chore-group">
+                        <h4>⭐ Morning Tasks (25¢ each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="thursday">
+                            <span class="chore-text">Make your bed</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="thursday">
+                            <span class="chore-text">Put dirty clothes in hamper</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="thursday">
+                            <span class="chore-text">Pack your backpack</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="thursday">
+                            <span class="chore-text">Feed pets/water plants</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chore-group">
+                        <h4>⭐⭐ After School & Kitchen (50¢ each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="thursday">
+                            <span class="chore-text">Hang up backpack & coat</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="thursday">
+                            <span class="chore-text">Set the table</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="thursday">
+                            <span class="chore-text">Clear dishes & wipe table</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chore-group">
+                        <h4>⭐⭐⭐ Big Chores ($1.00 each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="1.00" data-day="thursday">
+                            <span class="chore-text">Clean bathroom</span>
+                            <span class="chore-value">$1.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Friday -->
+            <div class="day-section">
+                <div class="day-header">
+                    <span>Friday</span>
+                    <span class="day-total">$<span class="daily-total" data-day="friday">0.00</span></span>
+                </div>
+                <div class="chore-list">
+                    <div class="chore-group">
+                        <h4>⭐ Morning Tasks (25¢ each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="friday">
+                            <span class="chore-text">Make your bed</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="friday">
+                            <span class="chore-text">Put dirty clothes in hamper</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="friday">
+                            <span class="chore-text">Pack your backpack</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="friday">
+                            <span class="chore-text">Feed pets/water plants</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chore-group">
+                        <h4>⭐⭐ After School & Kitchen (50¢ each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="friday">
+                            <span class="chore-text">Hang up backpack & coat</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="friday">
+                            <span class="chore-text">Set the table</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="friday">
+                            <span class="chore-text">Clear dishes & wipe table</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chore-group">
+                        <h4>⭐⭐⭐ Big Chores ($1.00 each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="1.00" data-day="friday">
+                            <span class="chore-text">Vacuum living room</span>
+                            <span class="chore-value">$1.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Saturday -->
+            <div class="day-section">
+                <div class="day-header">
+                    <span>Saturday</span>
+                    <span class="day-total">$<span class="daily-total" data-day="saturday">0.00</span></span>
+                </div>
+                <div class="chore-list">
+                    <div class="chore-group">
+                        <h4>⭐ Morning Tasks (25¢ each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="saturday">
+                            <span class="chore-text">Make your bed</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="saturday">
+                            <span class="chore-text">Put dirty clothes in hamper</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="saturday">
+                            <span class="chore-text">Keep room tidy</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chore-group">
+                        <h4>⭐⭐ Weekend Chores (50¢ each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="saturday">
+                            <span class="chore-text">Help with dishes</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="saturday">
+                            <span class="chore-text">Tidy up toys/games</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="saturday">
+                            <span class="chore-text">Help with grocery bags</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chore-group">
+                        <h4>⭐⭐⭐ Big Saturday Chores ($1.00 each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="1.00" data-day="saturday">
+                            <span class="chore-text">Vacuum your bedroom</span>
+                            <span class="chore-value">$1.00</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="1.00" data-day="saturday">
+                            <span class="chore-text">Help wash the car</span>
+                            <span class="chore-value">$1.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sunday -->
+            <div class="day-section">
+                <div class="day-header">
+                    <span>Sunday</span>
+                    <span class="day-total">$<span class="daily-total" data-day="sunday">0.00</span></span>
+                </div>
+                <div class="chore-list">
+                    <div class="chore-group">
+                        <h4>⭐ Morning Tasks (25¢ each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="sunday">
+                            <span class="chore-text">Make your bed</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="sunday">
+                            <span class="chore-text">Put dirty clothes in hamper</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.25" data-day="sunday">
+                            <span class="chore-text">Get ready for school week</span>
+                            <span class="chore-value">25¢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chore-group">
+                        <h4>⭐⭐ Weekend Chores (50¢ each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="sunday">
+                            <span class="chore-text">Help with dishes</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="sunday">
+                            <span class="chore-text">Organize backpack for Monday</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="0.50" data-day="sunday">
+                            <span class="chore-text">Put away clean clothes</span>
+                            <span class="chore-value">50¢</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chore-group">
+                        <h4>⭐⭐⭐ Weekly Wrap-up ($1.00 each)</h4>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="1.00" data-day="sunday">
+                            <span class="chore-text">Deep clean your room</span>
+                            <span class="chore-value">$1.00</span>
+                        </div>
+                        <div class="chore-item">
+                            <input type="checkbox" class="chore-checkbox" data-value="2.00" data-day="sunday">
+                            <span class="chore-text">Extra helpful all week bonus!</span>
+                            <span class="chore-value">$2.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="weekly-bonus">
+                <h3>🏆 Weekly Bonus Goals 🏆</h3>
+                <p><strong>Complete 20+ chores this week = $3.00 bonus!</strong></p>
+                <p><strong>Do chores cheerfully all week = $2.00 bonus!</strong></p>
+                <p>Chores completed: <span id="choreCount">0</span></p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="reset-btn" onclick="resetWeek()">🔄 Start New Week</button>
+                <button class="reset-btn" onclick="saveProgress()" style="background: #27ae60;">💾 Save Progress</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let choreData = {};
+        
+        // Load saved data
+        function loadProgress() {
+            const saved = localStorage.getItem('kidChoreProgress');
+            if (saved) {
+                choreData = JSON.parse(saved);
+                // Restore checkboxes
+                document.querySelectorAll('.chore-checkbox').forEach((checkbox, index) => {
+                    if (choreData[index]) {
+                        checkbox.checked = true;
+                        checkbox.parentElement.classList.add('completed');
+                    }
+                });
+                updateTotals();
+            }
+        }
+        
+        // Save progress
+        function saveProgress() {
+            localStorage.setItem('kidChoreProgress', JSON.stringify(choreData));
+            alert('Progress saved! 💾');
+        }
+        
+        // Reset week
+        function resetWeek() {
+            if (confirm('Are you sure you want to start a new week? This will clear all checkmarks.')) {
+                choreData = {};
+                document.querySelectorAll('.chore-checkbox').forEach(checkbox => {
+                    checkbox.checked = false;
+                    checkbox.parentElement.classList.remove('completed');
+                });
+                updateTotals();
+                localStorage.removeItem('kidChoreProgress');
+            }
+        }
+        
+        // Update all totals
+        function updateTotals() {
+            let weekTotal = 0;
+            let maxPossible = 0;
+            let choreCount = 0;
+            
+            // Calculate daily totals
+            const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+            days.forEach(day => {
+                let dayTotal = 0;
+                document.querySelectorAll(`[data-day="${day}"]`).forEach(checkbox => {
+                    const value = parseFloat(checkbox.dataset.value);
+                    maxPossible += value;
+                    
+                    if (checkbox.checked) {
+                        dayTotal += value;
+                        weekTotal += value;
+                        choreCount++;
+                    }
+                });
+                
+                const dayTotalElement = document.querySelector(`[data-day="${day}"].daily-total`);
+                if (dayTotalElement) {
+                    dayTotalElement.textContent = dayTotal.toFixed(2);
+                }
+            });
+            
+            // Check for bonus eligibility
+            if (choreCount >= 20) {
+                weekTotal += 3.00; // Bonus for 20+ chores
+            }
+            
+            // Update display
+            document.getElementById('weekTotal').textContent = weekTotal.toFixed(2);
+            document.getElementById('maxPossible').textContent = maxPossible.toFixed(2);
+            document.getElementById('progressPercent').textContent = Math.round((weekTotal / maxPossible) * 100);
+            document.getElementById('choreCount').textContent = choreCount;
+        }
+        
+        // Add event listeners to checkboxes
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.chore-checkbox').forEach((checkbox, index) => {
+                checkbox.addEventListener('change', function() {
+                    choreData[index] = this.checked;
+                    
+                    if (this.checked) {
+                        this.parentElement.classList.add('completed');
+                    } else {
+                        this.parentElement.classList.remove('completed');
+                    }
+                    
+                    updateTotals();
+                });
+            });
+            
+            // Load any saved progress
+            loadProgress();
+            updateTotals();
+        });
+    </script>
+</body>
+</html>
