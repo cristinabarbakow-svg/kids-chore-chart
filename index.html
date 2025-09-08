@@ -56,22 +56,27 @@
             font-size: 1.1em;
             font-weight: bold;
             transition: all 0.3s ease;
-            border: none;
+            border: 2px solid transparent;
             background: #34495e;
             position: relative;
             z-index: 100;
             pointer-events: auto;
             touch-action: manipulation;
             user-select: none;
-        }
-        
-        .kid-tab.active {
-            background: #2ecc71;
-            transform: scale(1.05);
+            outline: none;
         }
         
         .kid-tab:hover {
             background: #2c3e50;
+            border-color: #3498db;
+            transform: translateY(-2px);
+        }
+        
+        .kid-tab.active {
+            background: #2ecc71;
+            border-color: #27ae60;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         
         .kid-tab.active:hover {
@@ -292,11 +297,11 @@
         </div>
         
         <div class="kid-tabs">
-            <button class="kid-tab active" onclick="switchKid('kid1')" id="tab-kid1">
+            <button class="kid-tab active" id="tab-kid1">
                 👦 A1 - $<span id="kid1-total">0.00</span>
             </button>
-            <button class="kid-tab" onclick="switchKid('kid2')" id="tab-kid2">
-                👧 A2 - $<span id="kid2-total">0.00</span>
+            <button class="kid-tab" id="tab-kid2">
+                👦 A2 - $<span id="kid2-total">0.00</span>
             </button>
         </div>
         
@@ -310,7 +315,7 @@
                     <p>Unpaid: $<span id="kid1-unpaid">0.00</span></p>
                 </div>
                 <div class="total-item">
-                    <h4>👧 A2 Totals</h4>
+                    <h4>👦 A2 Totals</h4>
                     <p>This Week: $<span id="kid2-week-earned">0.00</span></p>
                     <p>All Time: $<span id="kid2-cumulative">0.00</span></p>
                     <p>Unpaid: $<span id="kid2-unpaid">0.00</span></p>
@@ -322,12 +327,12 @@
             <h3>💳 Payment & Reset Center</h3>
             <p>Use these buttons to manage payments and reset earnings</p>
             <div class="payment-controls">
-                <button class="pay-btn" onclick="payKid('kid1')">💰 Pay A1</button>
-                <button class="pay-btn" onclick="payKid('kid2')">💰 Pay A2</button>
-                <button class="pay-btn" onclick="payBothKids()">💰 Pay Both Kids</button>
-                <button class="clear-btn" onclick="clearWeeklyEarnings('kid1')">🗑️ Clear A1 Week</button>
-                <button class="clear-btn" onclick="clearWeeklyEarnings('kid2')">🗑️ Clear A2 Week</button>
-                <button class="reset-btn" onclick="resetWeek()">🔄 Start New Week</button>
+                <button class="pay-btn" id="pay-kid1-btn">💰 Pay A1</button>
+                <button class="pay-btn" id="pay-kid2-btn">💰 Pay A2</button>
+                <button class="pay-btn" id="pay-both-btn">💰 Pay Both Kids</button>
+                <button class="clear-btn" id="clear-kid1-btn">🗑️ Clear A1 Week</button>
+                <button class="clear-btn" id="clear-kid2-btn">🗑️ Clear A2 Week</button>
+                <button class="reset-btn" id="reset-week-btn">🔄 Start New Week</button>
             </div>
         </div>
         
@@ -356,7 +361,7 @@
         <!-- Kid 2 Content -->
         <div class="kid-content" id="kid2-content">
             <div class="earnings-display">
-                <div>👧 A2 Week Total: $<span id="kid2-week-total">0.00</span></div>
+                <div>👦 A2 Week Total: $<span id="kid2-week-total">0.00</span></div>
                 <div style="font-size: 0.8em; margin-top: 10px;">
                     Possible This Week: $<span id="kid2-max-possible">0.00</span> | 
                     Progress: <span id="kid2-progress-percent">0</span>%
@@ -376,8 +381,8 @@
         </div>
         
         <div style="text-align: center; margin: 30px;">
-            <button class="reset-btn" onclick="resetWeek()">🔄 Start New Week</button>
-            <button class="reset-btn" onclick="saveProgress()" style="background: #27ae60;">💾 Save Progress</button>
+            <button class="reset-btn" id="reset-week-btn2">🔄 Start New Week</button>
+            <button class="reset-btn" id="save-progress-btn" style="background: #27ae60;">💾 Save Progress</button>
         </div>
     </div>
     
@@ -393,27 +398,30 @@
         
         const choreCategories = [
             {
-                name: '⭐ Morning Tasks (25¢ each)',
+                name: '🌅 Morning Chores (50¢ each)',
                 chores: [
-                    { text: 'Make your bed', value: 0.25 },
-                    { text: 'Put dirty clothes in hamper', value: 0.25 },
-                    { text: 'Pack your backpack', value: 0.25 },
-                    { text: 'Feed pets/water plants', value: 0.25 }
+                    { text: 'Leave house 25 min before school starts', value: 0.50 },
+                    { text: 'Make bed', value: 0.50 }
                 ]
             },
             {
-                name: '⭐⭐ After School & Kitchen (50¢ each)',
+                name: '🍽️ Afternoon Chores (50¢ each)',
                 chores: [
-                    { text: 'Hang up backpack & coat', value: 0.50 },
-                    { text: 'Set the table', value: 0.50 },
-                    { text: 'Clear dishes & wipe table', value: 0.50 }
+                    { text: 'Set table for dinner', value: 0.50 },
+                    { text: 'Feed cat', value: 0.50 },
+                    { text: 'Feed dog', value: 0.50 },
+                    { text: 'Water plants', value: 0.50 },
+                    { text: 'Clear table and dishes', value: 0.50 },
+                    { text: 'Pack backpack', value: 0.50 }
                 ]
             },
             {
-                name: '⭐⭐⭐ Big Chores ($1.00 each)',
+                name: '🏠 Big Chores (75¢ each)',
                 chores: [
-                    { text: 'Vacuum bedroom', value: 1.00 },
-                    { text: 'Take out trash', value: 1.00 }
+                    { text: 'Clean bathroom', value: 0.75 },
+                    { text: 'Laundry', value: 0.75 },
+                    { text: 'Vacuum room', value: 0.75 },
+                    { text: 'Take out trash', value: 0.75 }
                 ]
             }
         ];
@@ -442,7 +450,7 @@
                         <div class="chore-item">
                             <input type="checkbox" class="chore-checkbox" data-value="${chore.value}" data-day="${dayLower}" data-kid="${kidId}" data-index="${choreIndex}">
                             <span class="chore-text">${chore.text}</span>
-                            <span class="chore-value">${chore.value >= 1 ? '$' + chore.value.toFixed(2) : Math.round(chore.value * 100) + '¢'}</span>
+                            <span class="chore-value">${chore.value < 1 ? Math.round(chore.value * 100) + '¢' : '$' + chore.value.toFixed(2)}</span>
                         </div>
                     `;
                     choreIndex++;
@@ -473,6 +481,9 @@
         }
         
         function switchKid(kidId) {
+            console.log('Switching to:', kidId); // Debug log
+            
+            // Hide all content
             document.querySelectorAll('.kid-content').forEach(content => {
                 content.classList.remove('active');
             });
@@ -480,9 +491,17 @@
                 tab.classList.remove('active');
             });
             
-            document.getElementById(kidId + '-content').classList.add('active');
-            document.getElementById('tab-' + kidId).classList.add('active');
-            currentKid = kidId;
+            // Show selected content
+            const targetContent = document.getElementById(kidId + '-content');
+            const targetTab = document.getElementById('tab-' + kidId);
+            
+            if (targetContent && targetTab) {
+                targetContent.classList.add('active');
+                targetTab.classList.add('active');
+                currentKid = kidId;
+            } else {
+                console.error('Could not find elements for:', kidId);
+            }
         }
         
         function updateDayTotals() {
@@ -490,9 +509,10 @@
                 const dayLower = day.toLowerCase();
                 ['kid1', 'kid2'].forEach(kidId => {
                     let dayTotal = 0;
-                    document.querySelectorAll(`[data-day="${dayLower}"][data-kid="${kidId}"]`).forEach(checkbox => {
+                    document.querySelectorAll(`[data-day="${dayLower}"][data-kid="${kidId}"].chore-checkbox`).forEach(checkbox => {
                         if (checkbox.checked) {
-                            dayTotal += parseFloat(checkbox.dataset.value);
+                            const value = parseFloat(checkbox.dataset.value) || 0;
+                            dayTotal += value;
                         }
                     });
                     
@@ -510,8 +530,9 @@
                 let maxPossible = 0;
                 let choreCount = 0;
                 
-                document.querySelectorAll(`[data-kid="${kidId}"]`).forEach(checkbox => {
-                    const value = parseFloat(checkbox.dataset.value);
+                // Calculate totals for this kid
+                document.querySelectorAll(`[data-kid="${kidId}"].chore-checkbox`).forEach(checkbox => {
+                    const value = parseFloat(checkbox.dataset.value) || 0;
                     maxPossible += value;
                     
                     if (checkbox.checked) {
@@ -520,23 +541,37 @@
                     }
                 });
                 
+                // Add bonus if applicable
+                let bonusAmount = 3.00; // Always include potential bonus in max possible
                 if (choreCount >= 20) {
-                    weekTotal += 3.00;
-                    maxPossible += 3.00;
+                    weekTotal += bonusAmount;
                 }
                 
+                // Update week earned and unpaid
                 totalData[kidId].weekEarned = weekTotal;
                 totalData[kidId].unpaid = weekTotal;
                 
-                document.getElementById(`${kidId}-week-total`).textContent = weekTotal.toFixed(2);
-                document.getElementById(`${kidId}-total`).textContent = weekTotal.toFixed(2);
-                document.getElementById(`${kidId}-max-possible`).textContent = maxPossible.toFixed(2);
-                document.getElementById(`${kidId}-progress-percent`).textContent = maxPossible > 0 ? Math.round((weekTotal / maxPossible) * 100) : 0;
-                document.querySelector(`.chore-count[data-kid="${kidId}"]`).textContent = choreCount;
+                // Safely update displays
+                const weekTotalEl = document.getElementById(`${kidId}-week-total`);
+                const tabTotalEl = document.getElementById(`${kidId}-total`);
+                const maxPossibleEl = document.getElementById(`${kidId}-max-possible`);
+                const progressEl = document.getElementById(`${kidId}-progress-percent`);
+                const choreCountEl = document.querySelector(`.chore-count[data-kid="${kidId}"]`);
+                const weekEarnedEl = document.getElementById(`${kidId}-week-earned`);
+                const cumulativeEl = document.getElementById(`${kidId}-cumulative`);
+                const unpaidEl = document.getElementById(`${kidId}-unpaid`);
                 
-                document.getElementById(`${kidId}-week-earned`).textContent = totalData[kidId].weekEarned.toFixed(2);
-                document.getElementById(`${kidId}-cumulative`).textContent = totalData[kidId].cumulative.toFixed(2);
-                document.getElementById(`${kidId}-unpaid`).textContent = totalData[kidId].unpaid.toFixed(2);
+                if (weekTotalEl) weekTotalEl.textContent = weekTotal.toFixed(2);
+                if (tabTotalEl) tabTotalEl.textContent = weekTotal.toFixed(2);
+                if (maxPossibleEl) maxPossibleEl.textContent = (maxPossible + bonusAmount).toFixed(2);
+                if (progressEl) {
+                    const maxWithBonus = maxPossible + bonusAmount;
+                    progressEl.textContent = maxWithBonus > 0 ? Math.round((weekTotal / maxWithBonus) * 100) : 0;
+                }
+                if (choreCountEl) choreCountEl.textContent = choreCount;
+                if (weekEarnedEl) weekEarnedEl.textContent = totalData[kidId].weekEarned.toFixed(2);
+                if (cumulativeEl) cumulativeEl.textContent = totalData[kidId].cumulative.toFixed(2);
+                if (unpaidEl) unpaidEl.textContent = totalData[kidId].unpaid.toFixed(2);
             });
             
             updateDayTotals();
@@ -652,8 +687,68 @@
         }
         
         function attachEventListeners() {
+            // Tab switching event listeners
+            const tab1 = document.getElementById('tab-kid1');
+            const tab2 = document.getElementById('tab-kid2');
+            
+            if (tab1) {
+                tab1.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('A1 tab clicked');
+                    switchKid('kid1');
+                });
+                
+                // Also add touch events for mobile
+                tab1.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    switchKid('kid1');
+                });
+            }
+            
+            if (tab2) {
+                tab2.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('A2 tab clicked');
+                    switchKid('kid2');
+                });
+                
+                tab2.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    switchKid('kid2');
+                });
+            }
+            
+            // Payment button event listeners
+            const buttons = [
+                { id: 'pay-kid1-btn', action: () => payKid('kid1') },
+                { id: 'pay-kid2-btn', action: () => payKid('kid2') },
+                { id: 'pay-both-btn', action: () => payBothKids() },
+                { id: 'clear-kid1-btn', action: () => clearWeeklyEarnings('kid1') },
+                { id: 'clear-kid2-btn', action: () => clearWeeklyEarnings('kid2') },
+                { id: 'reset-week-btn', action: () => resetWeek() },
+                { id: 'reset-week-btn2', action: () => resetWeek() },
+                { id: 'save-progress-btn', action: () => saveProgress() }
+            ];
+            
+            buttons.forEach(button => {
+                const element = document.getElementById(button.id);
+                if (element) {
+                    element.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        button.action();
+                    });
+                }
+            });
+            
+            // Checkbox listeners
             document.querySelectorAll('.chore-checkbox').forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
+                checkbox.addEventListener('change', function(e) {
+                    e.stopPropagation();
                     if (this.checked) {
                         this.parentElement.classList.add('completed');
                     } else {
