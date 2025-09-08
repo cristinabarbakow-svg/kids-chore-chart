@@ -760,24 +760,45 @@
         }
         
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing...');
+            
             // Force enable interactions for iframe embedding
             document.body.style.pointerEvents = 'auto';
             document.body.style.touchAction = 'manipulation';
             
-            // Add click event delegation for better iframe compatibility
+            // Add global click delegation for tabs as backup
             document.addEventListener('click', function(e) {
-                e.stopPropagation();
+                const target = e.target.closest('.kid-tab');
+                if (target) {
+                    console.log('Global click handler triggered for tab:', target.id);
+                    if (target.id === 'tab-kid1') {
+                        switchKid('kid1');
+                    } else if (target.id === 'tab-kid2') {
+                        switchKid('kid2');
+                    }
+                }
             }, true);
             
-            // Add touch events for mobile/tablet compatibility
-            document.addEventListener('touchstart', function(e) {
-                e.stopPropagation();
-            }, true);
+            // Add keyboard support for accessibility
+            document.addEventListener('keydown', function(e) {
+                if (e.key === '1' && e.ctrlKey) {
+                    e.preventDefault();
+                    switchKid('kid1');
+                    console.log('Switched to A1 via keyboard');
+                }
+                if (e.key === '2' && e.ctrlKey) {
+                    e.preventDefault();
+                    switchKid('kid2');
+                    console.log('Switched to A2 via keyboard');
+                }
+            });
             
             initializeDays();
             attachEventListeners();
             updateTotals();
             loadProgress();
+            
+            console.log('Initialization complete');
         });
     </script>
 </body>
