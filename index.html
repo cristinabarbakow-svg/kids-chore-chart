@@ -575,6 +575,38 @@
             });
             
             updateDayTotals();
+            
+            // Auto-save progress whenever totals are updated
+            autoSave();
+        }
+        
+        function autoSave() {
+            const checkboxStates = {};
+            document.querySelectorAll('.chore-checkbox').forEach(checkbox => {
+                const key = `${checkbox.dataset.kid}-${checkbox.dataset.day}-${checkbox.dataset.index}`;
+                checkboxStates[key] = checkbox.checked;
+            });
+            
+            const saveData = {
+                checkboxStates: checkboxStates,
+                totalData: totalData,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Silently auto-save using the same methods as manual save
+            try {
+                localStorage.setItem('kidChoreProgress', JSON.stringify(saveData));
+            } catch (e) {
+                try {
+                    sessionStorage.setItem('kidChoreProgress', JSON.stringify(saveData));
+                } catch (e2) {
+                    try {
+                        document.cookie = `kidChoreProgress=${encodeURIComponent(JSON.stringify(saveData))}; path=/; max-age=604800`;
+                    } catch (e3) {
+                        window.choreProgress = saveData;
+                    }
+                }
+            }
         }
         
         function payKid(kidId) {
