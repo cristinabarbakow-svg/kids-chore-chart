@@ -12,71 +12,74 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+            background: #f5f3ed;  /* Cream background */
             color: #2c3e50;
-            padding: 20px;
+            padding: 15px;
             min-height: 100vh;
         }
         
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            background: #ffffff;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            background: #faf8f3;  /* Lighter cream */
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             overflow: hidden;
         }
         
         .header {
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-            color: white;
-            padding: 40px 30px;
+            background: linear-gradient(135deg, #a8d5e2 0%, #9ec8d8 100%);  /* Pastel blue */
+            color: #2c3e50;
+            padding: 30px;
             text-align: center;
         }
         
         .header h1 {
-            font-size: 2.5em;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
+            font-size: 2.2em;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            margin-bottom: 6px;
+            font-family: 'Calibri', sans-serif;
         }
         
         .header p {
-            font-size: 1.1em;
-            opacity: 0.95;
+            font-size: 1em;
+            opacity: 0.85;
             font-weight: 400;
         }
         
         .view-toggle {
             display: flex;
-            background: #f8f9fa;
-            padding: 8px;
-            gap: 8px;
+            background: #f5f3ed;
+            padding: 6px;
+            gap: 6px;
         }
         
         .view-btn {
             flex: 1;
-            padding: 16px;
-            background: transparent;
-            color: #6c757d;
-            border: none;
-            font-size: 1.1em;
+            padding: 14px;
+            background: #faf8f3;
+            color: #555;
+            border: 2px solid #e8e6dd;
+            font-size: 1.05em;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            border-radius: 12px;
+            border-radius: 10px;
+            font-family: 'Calibri', sans-serif;
         }
         
         .view-btn:hover {
-            background: #e9ecef;
-            color: #495057;
+            background: #fff;
+            border-color: #ffd98e;  /* Pastel yellow */
         }
         
         .view-btn.active {
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-            color: white;
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+            background: linear-gradient(135deg, #ffd98e 0%, #ffcc66 100%);  /* Pastel yellow */
+            color: #2c3e50;
+            border-color: #ffcc66;
+            box-shadow: 0 2px 8px rgba(255, 204, 102, 0.3);
         }
         
         .view-content {
@@ -91,93 +94,93 @@
         .kids-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            padding: 30px;
-            background: #f8f9fa;
+            gap: 20px;
+            padding: 25px;
+            background: #f5f3ed;
         }
         
         .kid-section {
-            background: white;
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            background: #faf8f3;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 2px solid #e8e6dd;
         }
         
         .kid-header {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: white;
-            padding: 24px;
-            margin: -24px -24px 24px -24px;
-            border-radius: 20px 20px 0 0;
+            background: linear-gradient(135deg, #c9b6e4 0%, #b8a5d6 100%);  /* Pastel purple */
+            color: #2c3e50;
+            padding: 20px;
+            margin: -20px -20px 20px -20px;
+            border-radius: 14px 14px 0 0;
             text-align: center;
-            font-size: 1.8em;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-size: 1.6em;
+            font-weight: 600;
+            font-family: 'Calibri', sans-serif;
         }
         
         .earnings-box {
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-            color: white;
-            padding: 24px;
-            border-radius: 16px;
-            margin-bottom: 24px;
+            background: linear-gradient(135deg, #a8d5e2 0%, #9ec8d8 100%);  /* Pastel blue */
+            color: #2c3e50;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
             text-align: center;
-            box-shadow: 0 8px 24px rgba(255, 107, 53, 0.25);
+            box-shadow: 0 2px 8px rgba(168, 213, 226, 0.3);
         }
         
         .earnings-box .main-total {
-            font-size: 2.8em;
-            font-weight: 800;
-            margin-bottom: 8px;
-            letter-spacing: -1px;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 6px;
+            font-family: 'Calibri', sans-serif;
         }
         
         .earnings-box .sub-info {
-            font-size: 1em;
-            opacity: 0.95;
+            font-size: 0.95em;
+            opacity: 0.9;
             font-weight: 500;
         }
         
         .day-accordion {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
         
         .day-header {
-            background: white;
-            border: 2px solid #e9ecef;
+            background: #faf8f3;
+            border: 2px solid #e8e6dd;
             color: #2c3e50;
-            padding: 16px 20px;
-            border-radius: 12px;
+            padding: 14px 18px;
+            border-radius: 10px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            font-size: 1.05em;
+            font-size: 1em;
             transition: all 0.3s ease;
+            font-family: 'Calibri', sans-serif;
         }
         
         .day-header:hover {
-            border-color: #ff6b35;
-            background: #fff5f0;
-            transform: translateX(4px);
+            border-color: #ffd98e;
+            background: #fffef9;
         }
         
         .day-header.active {
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-            color: white;
-            border-color: #ff6b35;
-            border-radius: 12px 12px 0 0;
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+            background: linear-gradient(135deg, #ffd98e 0%, #ffcc66 100%);  /* Pastel yellow */
+            color: #2c3e50;
+            border-color: #ffcc66;
+            border-radius: 10px 10px 0 0;
         }
         
         .day-content {
             display: none;
-            background: white;
-            padding: 20px;
-            border: 2px solid #ff6b35;
+            background: #faf8f3;
+            padding: 16px;
+            border: 2px solid #ffcc66;
             border-top: none;
-            border-radius: 0 0 12px 12px;
+            border-radius: 0 0 10px 10px;
         }
         
         .day-content.active {
@@ -187,47 +190,49 @@
         .chore-item {
             display: flex;
             align-items: center;
-            padding: 14px 16px;
-            margin: 10px 0;
-            background: #f8f9fa;
-            border-radius: 12px;
-            border-left: 4px solid #ff6b35;
+            padding: 12px 14px;
+            margin: 8px 0;
+            background: #fff;
+            border-radius: 10px;
+            border-left: 4px solid #b8ddb5;  /* Pastel green */
             transition: all 0.2s ease;
         }
         
         .chore-item:hover {
-            background: #fff5f0;
-            transform: translateX(6px);
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.1);
+            background: #f9fdf9;
+            transform: translateX(4px);
+            box-shadow: 0 2px 6px rgba(184, 221, 181, 0.2);
         }
         
         .chore-checkbox {
-            width: 22px;
-            height: 22px;
-            margin-right: 16px;
+            width: 20px;
+            height: 20px;
+            margin-right: 14px;
             cursor: pointer;
-            accent-color: #ff6b35;
+            accent-color: #b8ddb5;  /* Pastel green */
         }
         
         .chore-text {
             flex-grow: 1;
-            font-size: 1em;
+            font-size: 0.95em;
             color: #2c3e50;
             font-weight: 500;
+            font-family: 'Calibri', sans-serif;
         }
         
         .chore-value {
             font-weight: 700;
-            color: #ff6b35;
-            font-size: 1.15em;
-            min-width: 65px;
+            color: #7cb97a;  /* Darker pastel green */
+            font-size: 1.05em;
+            min-width: 60px;
             text-align: right;
+            font-family: 'Calibri', sans-serif;
         }
         
         .chore-item.completed {
             opacity: 0.5;
-            background: #e8f5e9;
-            border-left-color: #4caf50;
+            background: #f0f9f0;
+            border-left-color: #a8d5a6;
         }
         
         .chore-item.completed .chore-text {
@@ -235,196 +240,205 @@
         }
         
         .chore-item.completed .chore-value {
-            color: #4caf50;
+            color: #a8d5a6;
         }
         
         .bonus-section {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: white;
-            padding: 24px;
-            border-radius: 16px;
-            margin-top: 24px;
+            background: linear-gradient(135deg, #ffb88c 0%, #ffa366 100%);  /* Pastel orange */
+            color: #2c3e50;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
             text-align: center;
-            box-shadow: 0 8px 24px rgba(44, 62, 80, 0.2);
+            box-shadow: 0 2px 8px rgba(255, 163, 102, 0.25);
         }
         
         .bonus-section h4 {
-            font-size: 1.3em;
-            margin-bottom: 12px;
+            font-size: 1.2em;
+            margin-bottom: 10px;
             font-weight: 700;
+            font-family: 'Calibri', sans-serif;
         }
         
         .bonus-section p {
-            font-size: 1.05em;
+            font-size: 1em;
             font-weight: 500;
         }
         
         /* PAYOUT VIEW */
         .payout-container {
-            padding: 40px;
+            padding: 30px;
             max-width: 1000px;
             margin: 0 auto;
-            background: #f8f9fa;
+            background: #f5f3ed;
         }
         
         .payout-summary {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
+            gap: 25px;
+            margin-bottom: 30px;
         }
         
         .payout-card {
-            background: white;
-            padding: 32px;
-            border-radius: 20px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            border-top: 6px solid #ff6b35;
+            background: #faf8f3;
+            padding: 26px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 2px solid #e8e6dd;
+            border-top: 5px solid #c9b6e4;  /* Pastel purple */
         }
         
         .payout-card h2 {
-            margin-bottom: 24px;
-            font-size: 2em;
+            margin-bottom: 20px;
+            font-size: 1.8em;
             color: #2c3e50;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-weight: 600;
+            font-family: 'Calibri', sans-serif;
         }
         
         .payout-row {
             display: flex;
             justify-content: space-between;
-            padding: 14px 0;
-            border-bottom: 1px solid #e9ecef;
-            font-size: 1.1em;
-            color: #495057;
+            padding: 12px 0;
+            border-bottom: 1px solid #e8e6dd;
+            font-size: 1.05em;
+            color: #555;
+            font-family: 'Calibri', sans-serif;
         }
         
         .payout-row:last-child {
             border-bottom: none;
-            font-size: 1.5em;
+            font-size: 1.4em;
             font-weight: 700;
-            margin-top: 12px;
-            padding-top: 20px;
-            border-top: 3px solid #ff6b35;
-            color: #ff6b35;
+            margin-top: 10px;
+            padding-top: 16px;
+            border-top: 2px solid #b8ddb5;
+            color: #7cb97a;
         }
         
         .payment-section {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            background: #faf8f3;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 2px solid #e8e6dd;
         }
         
         .payment-section h3 {
             color: #2c3e50;
-            margin-bottom: 30px;
-            font-size: 1.8em;
+            margin-bottom: 25px;
+            font-size: 1.6em;
             text-align: center;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-weight: 600;
+            font-family: 'Calibri', sans-serif;
         }
         
         .email-settings {
-            background: linear-gradient(135deg, #fff5f0 0%, #ffe8d9 100%);
-            border: 2px solid #ff6b35;
-            padding: 24px;
-            border-radius: 16px;
-            margin-bottom: 30px;
+            background: linear-gradient(135deg, #fff9e6 0%, #fff5d9 100%);
+            border: 2px solid #ffcc66;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
         }
         
         .email-settings h4 {
-            color: #d84315;
-            margin-bottom: 16px;
-            font-size: 1.3em;
+            color: #cc9933;
+            margin-bottom: 14px;
+            font-size: 1.2em;
             font-weight: 700;
+            font-family: 'Calibri', sans-serif;
         }
         
         .payment-method {
-            margin-bottom: 30px;
-            padding: 24px;
-            background: #f8f9fa;
-            border-radius: 16px;
-            border: 2px solid #e9ecef;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            border: 2px solid #e8e6dd;
         }
         
         .payment-method h4 {
-            color: #ff6b35;
-            margin-bottom: 18px;
-            font-size: 1.3em;
+            color: #9ec8d8;
+            margin-bottom: 16px;
+            font-size: 1.2em;
             font-weight: 700;
+            font-family: 'Calibri', sans-serif;
         }
         
         .input-group {
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
         
         .input-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 600;
-            color: #495057;
+            color: #555;
             font-size: 0.95em;
+            font-family: 'Calibri', sans-serif;
         }
         
         .input-group input, .input-group select {
             width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #dee2e6;
-            border-radius: 12px;
-            font-size: 1em;
+            padding: 12px 14px;
+            border: 2px solid #e8e6dd;
+            border-radius: 10px;
+            font-size: 0.95em;
             transition: all 0.3s;
-            font-family: inherit;
+            font-family: 'Calibri', sans-serif;
+            background: #fff;
         }
         
         .input-group input:focus, .input-group select:focus {
             outline: none;
-            border-color: #ff6b35;
-            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+            border-color: #ffd98e;
+            box-shadow: 0 0 0 3px rgba(255, 217, 142, 0.15);
         }
         
         .checkbox-group {
             display: flex;
             align-items: center;
-            margin: 12px 0;
+            margin: 10px 0;
         }
         
         .checkbox-group input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
             cursor: pointer;
-            accent-color: #ff6b35;
+            accent-color: #ffd98e;
         }
         
         .checkbox-group label {
             cursor: pointer;
             font-weight: 500;
-            color: #495057;
+            color: #555;
+            font-family: 'Calibri', sans-serif;
         }
         
         .btn-group {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 16px;
-            margin-top: 24px;
+            gap: 14px;
+            margin-top: 20px;
         }
         
         .btn {
-            padding: 16px 24px;
+            padding: 14px 20px;
             border: none;
-            border-radius: 12px;
-            font-size: 1.05em;
+            border-radius: 10px;
+            font-size: 1em;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            font-family: inherit;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            font-family: 'Calibri', sans-serif;
         }
         
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.12);
         }
         
         .btn:active {
@@ -432,31 +446,33 @@
         }
         
         .btn-pay {
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-            color: white;
+            background: linear-gradient(135deg, #b8ddb5 0%, #a8d5a6 100%);  /* Pastel green */
+            color: #2c3e50;
         }
         
         .btn-clear {
-            background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+            background: linear-gradient(135deg, #ffd98e 0%, #ffcc66 100%);  /* Pastel yellow */
             color: #2c3e50;
         }
         
         .btn-reset {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            color: white;
+            background: linear-gradient(135deg, #ffb88c 0%, #ffa366 100%);  /* Pastel orange */
+            color: #2c3e50;
         }
         
         .payment-info {
             background: #fff9e6;
-            border: 2px solid #ffb300;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 24px;
+            border: 2px solid #ffd98e;
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 20px;
             line-height: 1.6;
+            font-family: 'Calibri', sans-serif;
+            color: #555;
         }
         
         .payment-info strong {
-            color: #ff6b35;
+            color: #cc9933;
         }
         
         @media (max-width: 968px) {
@@ -473,7 +489,7 @@
             }
             
             .header h1 {
-                font-size: 2em;
+                font-size: 1.8em;
             }
         }
     </style>
@@ -493,474 +509,3 @@
         <!-- CHORES VIEW -->
         <div class="view-content active" id="chores-view">
             <div class="kids-grid">
-                <!-- A1 Section -->
-                <div class="kid-section">
-                    <div class="kid-header">👦 A1</div>
-                    
-                    <div class="earnings-box">
-                        <div class="main-total">$<span id="a1-total">0.00</span></div>
-                        <div class="sub-info">
-                            <div>Weekly Earnings</div>
-                            <div style="margin-top: 6px;">Completed: <span id="a1-count">0</span> chores | <span id="a1-progress">0</span>%</div>
-                        </div>
-                    </div>
-                    
-                    <div id="a1-days"></div>
-                    
-                    <div class="bonus-section">
-                        <h4>🏆 Bonus Challenge</h4>
-                        <p>Complete 20+ chores = <strong>$3.00 BONUS!</strong></p>
-                    </div>
-                </div>
-                
-                <!-- A2 Section -->
-                <div class="kid-section">
-                    <div class="kid-header">👦 A2</div>
-                    
-                    <div class="earnings-box">
-                        <div class="main-total">$<span id="a2-total">0.00</span></div>
-                        <div class="sub-info">
-                            <div>Weekly Earnings</div>
-                            <div style="margin-top: 6px;">Completed: <span id="a2-count">0</span> chores | <span id="a2-progress">0</span>%</div>
-                        </div>
-                    </div>
-                    
-                    <div id="a2-days"></div>
-                    
-                    <div class="bonus-section">
-                        <h4>🏆 Bonus Challenge</h4>
-                        <p>Complete 20+ chores = <strong>$3.00 BONUS!</strong></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- PAYOUT VIEW -->
-        <div class="view-content" id="payout-view">
-            <div class="payout-container">
-                <div class="payout-summary">
-                    <div class="payout-card">
-                        <h2>👦 A1</h2>
-                        <div class="payout-row">
-                            <span>This Week:</span>
-                            <span>$<span id="a1-payout-week">0.00</span></span>
-                        </div>
-                        <div class="payout-row">
-                            <span>All Time Paid:</span>
-                            <span>$<span id="a1-payout-cumulative">0.00</span></span>
-                        </div>
-                        <div class="payout-row">
-                            <span>💰 UNPAID:</span>
-                            <span>$<span id="a1-payout-unpaid">0.00</span></span>
-                        </div>
-                    </div>
-                    
-                    <div class="payout-card">
-                        <h2>👦 A2</h2>
-                        <div class="payout-row">
-                            <span>This Week:</span>
-                            <span>$<span id="a2-payout-week">0.00</span></span>
-                        </div>
-                        <div class="payout-row">
-                            <span>All Time Paid:</span>
-                            <span>$<span id="a2-payout-cumulative">0.00</span></span>
-                        </div>
-                        <div class="payout-row">
-                            <span>💰 UNPAID:</span>
-                            <span>$<span id="a2-payout-unpaid">0.00</span></span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="payment-section">
-                    <h3>💳 Payment Center</h3>
-                    
-                    <div class="email-settings">
-                        <h4>📧 Email Reminders</h4>
-                        <div class="input-group">
-                            <label>Your Email (for payment reminders):</label>
-                            <input type="email" id="parent-email" placeholder="your.email@example.com" onchange="savePaymentInfo()">
-                        </div>
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="email-enabled" checked onchange="savePaymentInfo()">
-                            <label for="email-enabled">Send email reminders when marking kids as paid</label>
-                        </div>
-                        <p style="margin-top: 12px; font-size: 0.9em; color: #6c757d;">
-                            ⚠️ <strong>Setup Required:</strong> Uses EmailJS (free). 
-                            <a href="#" onclick="showEmailSetup(); return false;" style="color: #ff6b35; font-weight: 700; text-decoration: none;">Setup instructions →</a>
-                        </p>
-                    </div>
-                    
-                    <div class="payment-method">
-                        <h4>📱 Venmo Details</h4>
-                        <div class="input-group">
-                            <label>A1 Venmo Username:</label>
-                            <input type="text" id="a1-venmo" placeholder="@username" onchange="savePaymentInfo()">
-                        </div>
-                        <div class="input-group">
-                            <label>A2 Venmo Username:</label>
-                            <input type="text" id="a2-venmo" placeholder="@username" onchange="savePaymentInfo()">
-                        </div>
-                    </div>
-                    
-                    <div class="payment-method">
-                        <h4>🏦 Chase/Zelle Details</h4>
-                        <div class="input-group">
-                            <label>A1 Phone/Email:</label>
-                            <input type="text" id="a1-chase" placeholder="Phone or Email" onchange="savePaymentInfo()">
-                        </div>
-                        <div class="input-group">
-                            <label>A2 Phone/Email:</label>
-                            <input type="text" id="a2-chase" placeholder="Phone or Email" onchange="savePaymentInfo()">
-                        </div>
-                    </div>
-                    
-                    <div class="btn-group">
-                        <button class="btn btn-pay" onclick="payKid('a1')">💰 Pay A1</button>
-                        <button class="btn btn-pay" onclick="payKid('a2')">💰 Pay A2</button>
-                        <button class="btn btn-pay" onclick="payBothKids()">💰 Pay Both</button>
-                    </div>
-                    
-                    <div class="btn-group">
-                        <button class="btn btn-clear" onclick="clearKid('a1')">🗑️ Clear A1</button>
-                        <button class="btn btn-clear" onclick="clearKid('a2')">🗑️ Clear A2</button>
-                        <button class="btn btn-reset" onclick="resetAll()">🔄 Reset All</button>
-                    </div>
-                    
-                    <div class="payment-info">
-                        <strong>💡 How it works:</strong> Save payment details above. When you pay, you'll get a reminder with their info. This tracks what you owe - send actual payments through Venmo/banking app!
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        // EmailJS Configuration
-        const EMAILJS_CONFIG = {
-            publicKey: 'YOUR_PUBLIC_KEY_HERE',
-            serviceId: 'YOUR_SERVICE_ID',
-            templateId: 'YOUR_TEMPLATE_ID'
-        };
-        
-        if (EMAILJS_CONFIG.publicKey !== 'YOUR_PUBLIC_KEY_HERE') {
-            emailjs.init(EMAILJS_CONFIG.publicKey);
-        }
-        
-        const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-        
-        const chores = [
-            { text: 'Leave house 25 min before school starts', value: 0.50 },
-            { text: 'Make bed', value: 0.50 },
-            { text: 'Set table for dinner', value: 0.50 },
-            { text: 'Feed cat', value: 0.50 },
-            { text: 'Feed dog', value: 0.50 },
-            { text: 'Water plants', value: 0.50 },
-            { text: 'Clear table and dishes', value: 0.50 },
-            { text: 'Pack backpack', value: 0.50 },
-            { text: 'Clean bathroom', value: 0.75 },
-            { text: 'Laundry', value: 0.75 },
-            { text: 'Vacuum room', value: 0.75 },
-            { text: 'Take out trash', value: 0.75 }
-        ];
-        
-        let kidData = {
-            a1: { cumulative: 0, unpaid: 0, venmo: '', chase: '' },
-            a2: { cumulative: 0, unpaid: 0, venmo: '', chase: '' },
-            parentEmail: '',
-            emailEnabled: true
-        };
-        
-        function sendPaymentEmail(kidId, amount) {
-            const emailEnabled = document.getElementById('email-enabled').checked;
-            const parentEmail = document.getElementById('parent-email').value;
-            
-            if (!emailEnabled || !parentEmail) {
-                console.log('Email not sent: disabled or no address');
-                return;
-            }
-            
-            if (EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY_HERE') {
-                console.log('Email not configured');
-                return;
-            }
-            
-            const kidName = kidId.toUpperCase();
-            const venmo = kidData[kidId].venmo;
-            const chase = kidData[kidId].chase;
-            
-            const templateParams = {
-                to_email: parentEmail,
-                kid_name: kidName,
-                amount: amount.toFixed(2),
-                venmo_info: venmo || 'Not set',
-                chase_info: chase || 'Not set',
-                date: new Date().toLocaleDateString(),
-                time: new Date().toLocaleTimeString()
-            };
-            
-            emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, templateParams)
-                .then(function(response) {
-                    console.log('✅ Email sent!', response.status);
-                }, function(error) {
-                    console.log('❌ Email failed:', error);
-                });
-        }
-        
-        function showEmailSetup() {
-            alert(`📧 EMAIL SETUP (2 minutes)
-
-1. Go to https://www.emailjs.com/ - Sign up FREE
-2. Add New Service → Choose Gmail
-3. Create Template:
-
-Subject: 💰 Pay {{kid_name}} - ${{amount}}
-
-Body:
-Payment reminder for {{kid_name}}!
-Amount: ${{amount}}
-Date: {{date}} at {{time}}
-
-Venmo: {{venmo_info}}
-Chase/Zelle: {{chase_info}}
-
-4. Copy your Public Key, Service ID, Template ID
-5. Replace in code:
-   publicKey: 'YOUR_PUBLIC_KEY_HERE'
-   serviceId: 'YOUR_SERVICE_ID'
-   templateId: 'YOUR_TEMPLATE_ID'
-
-Done!`);
-        }
-        
-        function generateDayHTML(day, kidId) {
-            const dayId = `${kidId}-${day}`;
-            return `
-                <div class="day-accordion">
-                    <div class="day-header" onclick="toggleDay('${dayId}')">
-                        <span>${day}</span>
-                        <span>$<span class="day-total" id="${dayId}-total">0.00</span></span>
-                    </div>
-                    <div class="day-content" id="${dayId}-content">
-                        ${chores.map((chore, i) => `
-                            <div class="chore-item">
-                                <input type="checkbox" class="chore-checkbox" 
-                                       id="${kidId}-${day}-${i}"
-                                       data-kid="${kidId}" data-day="${day}" data-value="${chore.value}"
-                                       onchange="updateTotals()">
-                                <span class="chore-text">${chore.text}</span>
-                                <span class="chore-value">${chore.value < 1 ? Math.round(chore.value * 100) + '¢' : '$' + chore.value.toFixed(2)}</span>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
-        
-        function initializeDays() {
-            days.forEach(day => {
-                document.getElementById('a1-days').innerHTML += generateDayHTML(day, 'a1');
-                document.getElementById('a2-days').innerHTML += generateDayHTML(day, 'a2');
-            });
-        }
-        
-        function toggleDay(dayId) {
-            const content = document.getElementById(`${dayId}-content`);
-            const header = content.previousElementSibling;
-            const isActive = content.classList.contains('active');
-            
-            document.querySelectorAll('.day-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.day-header').forEach(el => el.classList.remove('active'));
-            
-            if (!isActive) {
-                content.classList.add('active');
-                header.classList.add('active');
-            }
-        }
-        
-        function updateTotals() {
-            ['a1', 'a2'].forEach(kidId => {
-                let total = 0;
-                let count = 0;
-                
-                document.querySelectorAll(`[data-kid="${kidId}"]`).forEach(checkbox => {
-                    if (checkbox.checked) {
-                        total += parseFloat(checkbox.dataset.value);
-                        count++;
-                        checkbox.parentElement.classList.add('completed');
-                    } else {
-                        checkbox.parentElement.classList.remove('completed');
-                    }
-                });
-                
-                if (count >= 20) total += 3.00;
-                
-                document.getElementById(`${kidId}-total`).textContent = total.toFixed(2);
-                document.getElementById(`${kidId}-count`).textContent = count;
-                document.getElementById(`${kidId}-progress`).textContent = Math.round((total / 52) * 100);
-                document.getElementById(`${kidId}-payout-week`).textContent = total.toFixed(2);
-                document.getElementById(`${kidId}-payout-unpaid`).textContent = total.toFixed(2);
-                document.getElementById(`${kidId}-payout-cumulative`).textContent = kidData[kidId].cumulative.toFixed(2);
-                
-                kidData[kidId].unpaid = total;
-                
-                days.forEach(day => {
-                    let dayTotal = 0;
-                    document.querySelectorAll(`[data-kid="${kidId}"][data-day="${day}"]`).forEach(cb => {
-                        if (cb.checked) dayTotal += parseFloat(cb.dataset.value);
-                    });
-                    const dayEl = document.getElementById(`${kidId}-${day}-total`);
-                    if (dayEl) dayEl.textContent = dayTotal.toFixed(2);
-                });
-            });
-            
-            saveData();
-        }
-        
-        function switchView(view) {
-            document.querySelectorAll('.view-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.view-btn').forEach(el => el.classList.remove('active'));
-            document.getElementById(`${view}-view`).classList.add('active');
-            event.target.classList.add('active');
-        }
-        
-        function payKid(kidId) {
-            const amount = kidData[kidId].unpaid;
-            if (amount <= 0) {
-                alert(`${kidId.toUpperCase()} has no unpaid earnings.`);
-                return;
-            }
-            
-            const kidName = kidId.toUpperCase();
-            let msg = `Pay ${kidName} $${amount.toFixed(2)}?\n\n`;
-            if (kidData[kidId].venmo) msg += `Venmo: ${kidData[kidId].venmo}\n`;
-            if (kidData[kidId].chase) msg += `Chase/Zelle: ${kidData[kidId].chase}\n`;
-            
-            if (confirm(msg)) {
-                kidData[kidId].cumulative += amount;
-                kidData[kidId].unpaid = 0;
-                updateTotals();
-                sendPaymentEmail(kidId, amount);
-                alert(`💰 ${kidName} marked as PAID $${amount.toFixed(2)}!\n\n📧 Email reminder sent!\n\nSend the actual payment now!`);
-            }
-        }
-        
-        function payBothKids() {
-            const a1Amount = kidData.a1.unpaid;
-            const a2Amount = kidData.a2.unpaid;
-            const total = a1Amount + a2Amount;
-            
-            if (total <= 0) {
-                alert('No unpaid earnings.');
-                return;
-            }
-            
-            let msg = `Pay both kids $${total.toFixed(2)}?\n\nA1: $${a1Amount.toFixed(2)}`;
-            if (kidData.a1.venmo) msg += ` (${kidData.a1.venmo})`;
-            msg += `\nA2: $${a2Amount.toFixed(2)}`;
-            if (kidData.a2.venmo) msg += ` (${kidData.a2.venmo})`;
-            
-            if (confirm(msg)) {
-                kidData.a1.cumulative += a1Amount;
-                kidData.a2.cumulative += a2Amount;
-                kidData.a1.unpaid = 0;
-                kidData.a2.unpaid = 0;
-                updateTotals();
-                if (a1Amount > 0) sendPaymentEmail('a1', a1Amount);
-                if (a2Amount > 0) sendPaymentEmail('a2', a2Amount);
-                alert(`💰 Both kids marked as PAID!\n\n📧 Email reminders sent!`);
-            }
-        }
-        
-        function clearKid(kidId) {
-            if (confirm(`Clear all chores for ${kidId.toUpperCase()}?`)) {
-                document.querySelectorAll(`[data-kid="${kidId}"]`).forEach(cb => {
-                    cb.checked = false;
-                    cb.parentElement.classList.remove('completed');
-                });
-                updateTotals();
-                alert(`🗑️ ${kidId.toUpperCase()} cleared!`);
-            }
-        }
-        
-        function resetAll() {
-            if (confirm('⚠️ Reset EVERYTHING?')) {
-                document.querySelectorAll('.chore-checkbox').forEach(cb => {
-                    cb.checked = false;
-                    cb.parentElement.classList.remove('completed');
-                });
-                kidData = {
-                    a1: { cumulative: 0, unpaid: 0, venmo: kidData.a1.venmo, chase: kidData.a1.chase },
-                    a2: { cumulative: 0, unpaid: 0, venmo: kidData.a2.venmo, chase: kidData.a2.chase },
-                    parentEmail: kidData.parentEmail,
-                    emailEnabled: kidData.emailEnabled
-                };
-                updateTotals();
-                alert('🔄 Reset complete!');
-            }
-        }
-        
-        function savePaymentInfo() {
-            kidData.a1.venmo = document.getElementById('a1-venmo').value;
-            kidData.a1.chase = document.getElementById('a1-chase').value;
-            kidData.a2.venmo = document.getElementById('a2-venmo').value;
-            kidData.a2.chase = document.getElementById('a2-chase').value;
-            kidData.parentEmail = document.getElementById('parent-email').value;
-            kidData.emailEnabled = document.getElementById('email-enabled').checked;
-            saveData();
-        }
-        
-        function saveData() {
-            const data = {
-                checkboxes: {},
-                kidData: kidData,
-                timestamp: new Date().toISOString()
-            };
-            
-            document.querySelectorAll('.chore-checkbox').forEach(cb => {
-                data.checkboxes[cb.id] = cb.checked;
-            });
-            
-            try {
-                localStorage.setItem('choreChartPro', JSON.stringify(data));
-            } catch (e) {
-                console.log('Save failed:', e);
-            }
-        }
-        
-        function loadData() {
-            try {
-                const saved = localStorage.getItem('choreChartPro');
-                if (saved) {
-                    const data = JSON.parse(saved);
-                    kidData = data.kidData || kidData;
-                    
-                    document.getElementById('a1-venmo').value = kidData.a1.venmo || '';
-                    document.getElementById('a1-chase').value = kidData.a1.chase || '';
-                    document.getElementById('a2-venmo').value = kidData.a2.venmo || '';
-                    document.getElementById('a2-chase').value = kidData.a2.chase || '';
-                    document.getElementById('parent-email').value = kidData.parentEmail || '';
-                    document.getElementById('email-enabled').checked = kidData.emailEnabled !== false;
-                    
-                    setTimeout(() => {
-                        Object.keys(data.checkboxes || {}).forEach(id => {
-                            const cb = document.getElementById(id);
-                            if (cb) cb.checked = data.checkboxes[id];
-                        });
-                        updateTotals();
-                    }, 100);
-                }
-            } catch (e) {
-                console.log('Load failed:', e);
-            }
-        }
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeDays();
-            loadData();
-            updateTotals();
-        });
-    </script>
-</body>
-</html>
