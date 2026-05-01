@@ -12,67 +12,71 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            padding: 15px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #2c3e50;
+            padding: 20px;
             min-height: 100vh;
         }
         
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
         }
         
         .header {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
             color: white;
-            padding: 25px;
+            padding: 40px 30px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         .header h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-size: 2.5em;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            font-weight: 400;
         }
         
         .view-toggle {
             display: flex;
-            background: #34495e;
-            border-bottom: 3px solid #2c3e50;
+            background: #f8f9fa;
+            padding: 8px;
+            gap: 8px;
         }
         
         .view-btn {
             flex: 1;
-            padding: 18px;
-            background: #34495e;
-            color: white;
+            padding: 16px;
+            background: transparent;
+            color: #6c757d;
             border: none;
-            font-size: 1.2em;
-            font-weight: bold;
+            font-size: 1.1em;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            border-right: 1px solid #2c3e50;
-        }
-        
-        .view-btn:last-child {
-            border-right: none;
+            border-radius: 12px;
         }
         
         .view-btn:hover {
-            background: #2c3e50;
+            background: #e9ecef;
+            color: #495057;
         }
         
         .view-btn.active {
-            background: #3498db;
-            transform: scale(1.02);
-            box-shadow: inset 0 -4px 0 rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
         }
         
         .view-content {
@@ -87,85 +91,93 @@
         .kids-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            padding: 20px;
+            gap: 24px;
+            padding: 30px;
+            background: #f8f9fa;
         }
         
         .kid-section {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
         }
         
         .kid-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
-            padding: 20px;
-            margin: -20px -20px 20px -20px;
-            border-radius: 12px 12px 0 0;
+            padding: 24px;
+            margin: -24px -24px 24px -24px;
+            border-radius: 20px 20px 0 0;
             text-align: center;
-            font-size: 1.5em;
-            font-weight: bold;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
         
         .earnings-box {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
             color: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 24px rgba(255, 107, 53, 0.25);
         }
         
         .earnings-box .main-total {
-            font-size: 2em;
-            font-weight: bold;
-            margin-bottom: 5px;
+            font-size: 2.8em;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
         }
         
         .earnings-box .sub-info {
-            font-size: 0.9em;
-            opacity: 0.9;
+            font-size: 1em;
+            opacity: 0.95;
+            font-weight: 500;
         }
         
         .day-accordion {
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
         
         .day-header {
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-            color: white;
-            padding: 12px 15px;
-            border-radius: 8px;
+            background: white;
+            border: 2px solid #e9ecef;
+            color: #2c3e50;
+            padding: 16px 20px;
+            border-radius: 12px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 1.05em;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .day-header:hover {
-            transform: translateX(3px);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            border-color: #ff6b35;
+            background: #fff5f0;
+            transform: translateX(4px);
         }
         
         .day-header.active {
-            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-            border-radius: 8px 8px 0 0;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            border-color: #ff6b35;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
         }
         
         .day-content {
             display: none;
             background: white;
-            padding: 15px;
-            border: 2px solid #3498db;
+            padding: 20px;
+            border: 2px solid #ff6b35;
             border-top: none;
-            border-radius: 0 0 8px 8px;
+            border-radius: 0 0 12px 12px;
         }
         
         .day-content.active {
@@ -175,190 +187,258 @@
         .chore-item {
             display: flex;
             align-items: center;
-            padding: 12px;
-            margin: 8px 0;
+            padding: 14px 16px;
+            margin: 10px 0;
             background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #3498db;
+            border-radius: 12px;
+            border-left: 4px solid #ff6b35;
             transition: all 0.2s ease;
         }
         
         .chore-item:hover {
-            background: #e9ecef;
-            transform: translateX(5px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background: #fff5f0;
+            transform: translateX(6px);
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.1);
         }
         
         .chore-checkbox {
-            width: 24px;
-            height: 24px;
-            margin-right: 15px;
+            width: 22px;
+            height: 22px;
+            margin-right: 16px;
             cursor: pointer;
-            accent-color: #2ecc71;
+            accent-color: #ff6b35;
         }
         
         .chore-text {
             flex-grow: 1;
             font-size: 1em;
+            color: #2c3e50;
+            font-weight: 500;
         }
         
         .chore-value {
-            font-weight: bold;
-            color: #27ae60;
-            font-size: 1.1em;
-            min-width: 60px;
+            font-weight: 700;
+            color: #ff6b35;
+            font-size: 1.15em;
+            min-width: 65px;
             text-align: right;
         }
         
         .chore-item.completed {
-            opacity: 0.6;
-            background: #d5f5d5;
+            opacity: 0.5;
+            background: #e8f5e9;
+            border-left-color: #4caf50;
         }
         
         .chore-item.completed .chore-text {
             text-decoration: line-through;
         }
         
+        .chore-item.completed .chore-value {
+            color: #4caf50;
+        }
+        
         .bonus-section {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
+            padding: 24px;
+            border-radius: 16px;
+            margin-top: 24px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 24px rgba(44, 62, 80, 0.2);
+        }
+        
+        .bonus-section h4 {
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .bonus-section p {
+            font-size: 1.05em;
+            font-weight: 500;
         }
         
         /* PAYOUT VIEW */
         .payout-container {
-            padding: 30px;
-            max-width: 900px;
+            padding: 40px;
+            max-width: 1000px;
             margin: 0 auto;
+            background: #f8f9fa;
         }
         
         .payout-summary {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 30px;
+            gap: 30px;
+            margin-bottom: 40px;
         }
         
         .payout-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            background: white;
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border-top: 6px solid #ff6b35;
         }
         
         .payout-card h2 {
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            border-bottom: 2px solid rgba(255,255,255,0.3);
-            padding-bottom: 10px;
+            margin-bottom: 24px;
+            font-size: 2em;
+            color: #2c3e50;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
         
         .payout-row {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding: 14px 0;
+            border-bottom: 1px solid #e9ecef;
             font-size: 1.1em;
+            color: #495057;
         }
         
         .payout-row:last-child {
             border-bottom: none;
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-top: 10px;
-            padding-top: 15px;
-            border-top: 2px solid rgba(255,255,255,0.5);
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-top: 12px;
+            padding-top: 20px;
+            border-top: 3px solid #ff6b35;
+            color: #ff6b35;
         }
         
         .payment-section {
             background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
         }
         
         .payment-section h3 {
             color: #2c3e50;
-            margin-bottom: 20px;
-            font-size: 1.5em;
+            margin-bottom: 30px;
+            font-size: 1.8em;
             text-align: center;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .email-settings {
+            background: linear-gradient(135deg, #fff5f0 0%, #ffe8d9 100%);
+            border: 2px solid #ff6b35;
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+        
+        .email-settings h4 {
+            color: #d84315;
+            margin-bottom: 16px;
+            font-size: 1.3em;
+            font-weight: 700;
         }
         
         .payment-method {
-            margin-bottom: 25px;
-            padding: 20px;
+            margin-bottom: 30px;
+            padding: 24px;
             background: #f8f9fa;
-            border-radius: 10px;
+            border-radius: 16px;
             border: 2px solid #e9ecef;
         }
         
         .payment-method h4 {
-            color: #3498db;
-            margin-bottom: 15px;
-            font-size: 1.2em;
+            color: #ff6b35;
+            margin-bottom: 18px;
+            font-size: 1.3em;
+            font-weight: 700;
         }
         
         .input-group {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
         
         .input-group label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #555;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.95em;
         }
         
         .input-group input, .input-group select {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+            padding: 14px 16px;
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
             font-size: 1em;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
+            font-family: inherit;
         }
         
         .input-group input:focus, .input-group select:focus {
             outline: none;
-            border-color: #3498db;
+            border-color: #ff6b35;
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+            accent-color: #ff6b35;
+        }
+        
+        .checkbox-group label {
+            cursor: pointer;
+            font-weight: 500;
+            color: #495057;
         }
         
         .btn-group {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
         }
         
         .btn {
-            flex: 1;
-            padding: 15px;
+            padding: 16px 24px;
             border: none;
-            border-radius: 10px;
-            font-size: 1.1em;
-            font-weight: bold;
+            border-radius: 12px;
+            font-size: 1.05em;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-family: inherit;
         }
         
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
         }
         
         .btn-pay {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
             color: white;
         }
         
         .btn-clear {
-            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
-            color: white;
+            background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+            color: #2c3e50;
         }
         
         .btn-reset {
@@ -367,18 +447,19 @@
         }
         
         .payment-info {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
+            background: #fff9e6;
+            border: 2px solid #ffb300;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 24px;
+            line-height: 1.6;
         }
         
         .payment-info strong {
-            color: #856404;
+            color: #ff6b35;
         }
         
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
             .kids-grid {
                 grid-template-columns: 1fr;
             }
@@ -388,7 +469,11 @@
             }
             
             .btn-group {
-                flex-direction: column;
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
             }
         }
     </style>
@@ -396,13 +481,13 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>💰 Kids Chore Chart & Payment Center 💰</h1>
-            <p>Track chores, earn money, get paid!</p>
+            <h1>💰 Chore Chart & Payment Hub</h1>
+            <p>Track chores, earn rewards, manage payments</p>
         </div>
         
         <div class="view-toggle">
             <button class="view-btn active" onclick="switchView('chores')">📋 Chores</button>
-            <button class="view-btn" onclick="switchView('payout')">💳 Payment Center</button>
+            <button class="view-btn" onclick="switchView('payout')">💳 Payments</button>
         </div>
         
         <!-- CHORES VIEW -->
@@ -415,16 +500,16 @@
                     <div class="earnings-box">
                         <div class="main-total">$<span id="a1-total">0.00</span></div>
                         <div class="sub-info">
-                            <div>This Week's Earnings</div>
-                            <div style="margin-top: 5px;">Chores: <span id="a1-count">0</span> | Progress: <span id="a1-progress">0</span>%</div>
+                            <div>Weekly Earnings</div>
+                            <div style="margin-top: 6px;">Completed: <span id="a1-count">0</span> chores | <span id="a1-progress">0</span>%</div>
                         </div>
                     </div>
                     
                     <div id="a1-days"></div>
                     
                     <div class="bonus-section">
-                        <h4 style="margin-bottom: 10px;">🏆 Weekly Bonus Goal 🏆</h4>
-                        <p style="font-size: 1.1em;"><strong>Complete 20+ chores = $3.00 BONUS!</strong></p>
+                        <h4>🏆 Bonus Challenge</h4>
+                        <p>Complete 20+ chores = <strong>$3.00 BONUS!</strong></p>
                     </div>
                 </div>
                 
@@ -435,16 +520,16 @@
                     <div class="earnings-box">
                         <div class="main-total">$<span id="a2-total">0.00</span></div>
                         <div class="sub-info">
-                            <div>This Week's Earnings</div>
-                            <div style="margin-top: 5px;">Chores: <span id="a2-count">0</span> | Progress: <span id="a2-progress">0</span>%</div>
+                            <div>Weekly Earnings</div>
+                            <div style="margin-top: 6px;">Completed: <span id="a2-count">0</span> chores | <span id="a2-progress">0</span>%</div>
                         </div>
                     </div>
                     
                     <div id="a2-days"></div>
                     
                     <div class="bonus-section">
-                        <h4 style="margin-bottom: 10px;">🏆 Weekly Bonus Goal 🏆</h4>
-                        <p style="font-size: 1.1em;"><strong>Complete 20+ chores = $3.00 BONUS!</strong></p>
+                        <h4>🏆 Bonus Challenge</h4>
+                        <p>Complete 20+ chores = <strong>$3.00 BONUS!</strong></p>
                     </div>
                 </div>
             </div>
@@ -455,7 +540,7 @@
             <div class="payout-container">
                 <div class="payout-summary">
                     <div class="payout-card">
-                        <h2>👦 A1 Summary</h2>
+                        <h2>👦 A1</h2>
                         <div class="payout-row">
                             <span>This Week:</span>
                             <span>$<span id="a1-payout-week">0.00</span></span>
@@ -471,7 +556,7 @@
                     </div>
                     
                     <div class="payout-card">
-                        <h2>👦 A2 Summary</h2>
+                        <h2>👦 A2</h2>
                         <div class="payout-row">
                             <span>This Week:</span>
                             <span>$<span id="a2-payout-week">0.00</span></span>
@@ -488,10 +573,26 @@
                 </div>
                 
                 <div class="payment-section">
-                    <h3>💳 Payment Methods</h3>
+                    <h3>💳 Payment Center</h3>
+                    
+                    <div class="email-settings">
+                        <h4>📧 Email Reminders</h4>
+                        <div class="input-group">
+                            <label>Your Email (for payment reminders):</label>
+                            <input type="email" id="parent-email" placeholder="your.email@example.com" onchange="savePaymentInfo()">
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="email-enabled" checked onchange="savePaymentInfo()">
+                            <label for="email-enabled">Send email reminders when marking kids as paid</label>
+                        </div>
+                        <p style="margin-top: 12px; font-size: 0.9em; color: #6c757d;">
+                            ⚠️ <strong>Setup Required:</strong> Uses EmailJS (free). 
+                            <a href="#" onclick="showEmailSetup(); return false;" style="color: #ff6b35; font-weight: 700; text-decoration: none;">Setup instructions →</a>
+                        </p>
+                    </div>
                     
                     <div class="payment-method">
-                        <h4>📱 Venmo Payment Info</h4>
+                        <h4>📱 Venmo Details</h4>
                         <div class="input-group">
                             <label>A1 Venmo Username:</label>
                             <input type="text" id="a1-venmo" placeholder="@username" onchange="savePaymentInfo()">
@@ -503,7 +604,7 @@
                     </div>
                     
                     <div class="payment-method">
-                        <h4>🏦 Chase/Zelle Payment Info</h4>
+                        <h4>🏦 Chase/Zelle Details</h4>
                         <div class="input-group">
                             <label>A1 Phone/Email:</label>
                             <input type="text" id="a1-chase" placeholder="Phone or Email" onchange="savePaymentInfo()">
@@ -521,41 +622,117 @@
                     </div>
                     
                     <div class="btn-group">
-                        <button class="btn btn-clear" onclick="clearKid('a1')">🗑️ Clear A1 Week</button>
-                        <button class="btn btn-clear" onclick="clearKid('a2')">🗑️ Clear A2 Week</button>
-                        <button class="btn btn-reset" onclick="resetAll()">🔄 Reset Everything</button>
+                        <button class="btn btn-clear" onclick="clearKid('a1')">🗑️ Clear A1</button>
+                        <button class="btn btn-clear" onclick="clearKid('a2')">🗑️ Clear A2</button>
+                        <button class="btn btn-reset" onclick="resetAll()">🔄 Reset All</button>
                     </div>
                     
                     <div class="payment-info">
-                        <strong>💡 How to use:</strong> Save your kids' Venmo usernames or Chase/Zelle info above. When you pay them, you'll see a reminder with their payment details. This chart tracks what you owe - you'll still need to send the actual payment through Venmo or your banking app!
+                        <strong>💡 How it works:</strong> Save payment details above. When you pay, you'll get a reminder with their info. This tracks what you owe - send actual payments through Venmo/banking app!
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
+        // EmailJS Configuration
+        const EMAILJS_CONFIG = {
+            publicKey: 'YOUR_PUBLIC_KEY_HERE',
+            serviceId: 'YOUR_SERVICE_ID',
+            templateId: 'YOUR_TEMPLATE_ID'
+        };
+        
+        if (EMAILJS_CONFIG.publicKey !== 'YOUR_PUBLIC_KEY_HERE') {
+            emailjs.init(EMAILJS_CONFIG.publicKey);
+        }
+        
         const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
         
         const chores = [
-            { text: 'Leave house 25 min before school starts', value: 0.50, cat: 'morning' },
-            { text: 'Make bed', value: 0.50, cat: 'morning' },
-            { text: 'Set table for dinner', value: 0.50, cat: 'afternoon' },
-            { text: 'Feed cat', value: 0.50, cat: 'afternoon' },
-            { text: 'Feed dog', value: 0.50, cat: 'afternoon' },
-            { text: 'Water plants', value: 0.50, cat: 'afternoon' },
-            { text: 'Clear table and dishes', value: 0.50, cat: 'afternoon' },
-            { text: 'Pack backpack', value: 0.50, cat: 'afternoon' },
-            { text: 'Clean bathroom', value: 0.75, cat: 'big' },
-            { text: 'Laundry', value: 0.75, cat: 'big' },
-            { text: 'Vacuum room', value: 0.75, cat: 'big' },
-            { text: 'Take out trash', value: 0.75, cat: 'big' }
+            { text: 'Leave house 25 min before school starts', value: 0.50 },
+            { text: 'Make bed', value: 0.50 },
+            { text: 'Set table for dinner', value: 0.50 },
+            { text: 'Feed cat', value: 0.50 },
+            { text: 'Feed dog', value: 0.50 },
+            { text: 'Water plants', value: 0.50 },
+            { text: 'Clear table and dishes', value: 0.50 },
+            { text: 'Pack backpack', value: 0.50 },
+            { text: 'Clean bathroom', value: 0.75 },
+            { text: 'Laundry', value: 0.75 },
+            { text: 'Vacuum room', value: 0.75 },
+            { text: 'Take out trash', value: 0.75 }
         ];
         
         let kidData = {
             a1: { cumulative: 0, unpaid: 0, venmo: '', chase: '' },
-            a2: { cumulative: 0, unpaid: 0, venmo: '', chase: '' }
+            a2: { cumulative: 0, unpaid: 0, venmo: '', chase: '' },
+            parentEmail: '',
+            emailEnabled: true
         };
+        
+        function sendPaymentEmail(kidId, amount) {
+            const emailEnabled = document.getElementById('email-enabled').checked;
+            const parentEmail = document.getElementById('parent-email').value;
+            
+            if (!emailEnabled || !parentEmail) {
+                console.log('Email not sent: disabled or no address');
+                return;
+            }
+            
+            if (EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY_HERE') {
+                console.log('Email not configured');
+                return;
+            }
+            
+            const kidName = kidId.toUpperCase();
+            const venmo = kidData[kidId].venmo;
+            const chase = kidData[kidId].chase;
+            
+            const templateParams = {
+                to_email: parentEmail,
+                kid_name: kidName,
+                amount: amount.toFixed(2),
+                venmo_info: venmo || 'Not set',
+                chase_info: chase || 'Not set',
+                date: new Date().toLocaleDateString(),
+                time: new Date().toLocaleTimeString()
+            };
+            
+            emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, templateParams)
+                .then(function(response) {
+                    console.log('✅ Email sent!', response.status);
+                }, function(error) {
+                    console.log('❌ Email failed:', error);
+                });
+        }
+        
+        function showEmailSetup() {
+            alert(`📧 EMAIL SETUP (2 minutes)
+
+1. Go to https://www.emailjs.com/ - Sign up FREE
+2. Add New Service → Choose Gmail
+3. Create Template:
+
+Subject: 💰 Pay {{kid_name}} - ${{amount}}
+
+Body:
+Payment reminder for {{kid_name}}!
+Amount: ${{amount}}
+Date: {{date}} at {{time}}
+
+Venmo: {{venmo_info}}
+Chase/Zelle: {{chase_info}}
+
+4. Copy your Public Key, Service ID, Template ID
+5. Replace in code:
+   publicKey: 'YOUR_PUBLIC_KEY_HERE'
+   serviceId: 'YOUR_SERVICE_ID'
+   templateId: 'YOUR_TEMPLATE_ID'
+
+Done!`);
+        }
         
         function generateDayHTML(day, kidId) {
             const dayId = `${kidId}-${day}`;
@@ -582,26 +759,20 @@
         }
         
         function initializeDays() {
-            const a1Container = document.getElementById('a1-days');
-            const a2Container = document.getElementById('a2-days');
-            
             days.forEach(day => {
-                a1Container.innerHTML += generateDayHTML(day, 'a1');
-                a2Container.innerHTML += generateDayHTML(day, 'a2');
+                document.getElementById('a1-days').innerHTML += generateDayHTML(day, 'a1');
+                document.getElementById('a2-days').innerHTML += generateDayHTML(day, 'a2');
             });
         }
         
         function toggleDay(dayId) {
             const content = document.getElementById(`${dayId}-content`);
             const header = content.previousElementSibling;
-            
             const isActive = content.classList.contains('active');
             
-            // Close all days
             document.querySelectorAll('.day-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.day-header').forEach(el => el.classList.remove('active'));
             
-            // Open clicked day if it wasn't active
             if (!isActive) {
                 content.classList.add('active');
                 header.classList.add('active');
@@ -628,15 +799,12 @@
                 document.getElementById(`${kidId}-total`).textContent = total.toFixed(2);
                 document.getElementById(`${kidId}-count`).textContent = count;
                 document.getElementById(`${kidId}-progress`).textContent = Math.round((total / 52) * 100);
-                
-                // Update payout view
                 document.getElementById(`${kidId}-payout-week`).textContent = total.toFixed(2);
                 document.getElementById(`${kidId}-payout-unpaid`).textContent = total.toFixed(2);
                 document.getElementById(`${kidId}-payout-cumulative`).textContent = kidData[kidId].cumulative.toFixed(2);
                 
                 kidData[kidId].unpaid = total;
                 
-                // Update day totals
                 days.forEach(day => {
                     let dayTotal = 0;
                     document.querySelectorAll(`[data-kid="${kidId}"][data-day="${day}"]`).forEach(cb => {
@@ -653,7 +821,6 @@
         function switchView(view) {
             document.querySelectorAll('.view-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.view-btn').forEach(el => el.classList.remove('active'));
-            
             document.getElementById(`${view}-view`).classList.add('active');
             event.target.classList.add('active');
         }
@@ -666,16 +833,16 @@
             }
             
             const kidName = kidId.toUpperCase();
-            let paymentMsg = `Pay ${kidName} $${amount.toFixed(2)}?\n\n`;
+            let msg = `Pay ${kidName} $${amount.toFixed(2)}?\n\n`;
+            if (kidData[kidId].venmo) msg += `Venmo: ${kidData[kidId].venmo}\n`;
+            if (kidData[kidId].chase) msg += `Chase/Zelle: ${kidData[kidId].chase}\n`;
             
-            if (kidData[kidId].venmo) paymentMsg += `Venmo: ${kidData[kidId].venmo}\n`;
-            if (kidData[kidId].chase) paymentMsg += `Chase/Zelle: ${kidData[kidId].chase}\n`;
-            
-            if (confirm(paymentMsg)) {
+            if (confirm(msg)) {
                 kidData[kidId].cumulative += amount;
                 kidData[kidId].unpaid = 0;
                 updateTotals();
-                alert(`💰 Marked ${kidName} as PAID $${amount.toFixed(2)}!\n\nDon't forget to send the actual payment!`);
+                sendPaymentEmail(kidId, amount);
+                alert(`💰 ${kidName} marked as PAID $${amount.toFixed(2)}!\n\n📧 Email reminder sent!\n\nSend the actual payment now!`);
             }
         }
         
@@ -685,7 +852,7 @@
             const total = a1Amount + a2Amount;
             
             if (total <= 0) {
-                alert('No unpaid earnings for either kid.');
+                alert('No unpaid earnings.');
                 return;
             }
             
@@ -700,34 +867,37 @@
                 kidData.a1.unpaid = 0;
                 kidData.a2.unpaid = 0;
                 updateTotals();
-                alert(`💰 Marked both kids as PAID!\n\nDon't forget to send the actual payments!`);
+                if (a1Amount > 0) sendPaymentEmail('a1', a1Amount);
+                if (a2Amount > 0) sendPaymentEmail('a2', a2Amount);
+                alert(`💰 Both kids marked as PAID!\n\n📧 Email reminders sent!`);
             }
         }
         
         function clearKid(kidId) {
-            const kidName = kidId.toUpperCase();
-            if (confirm(`Clear all chores for ${kidName} this week?`)) {
-                document.querySelectorAll(`[data-kid="${kidId}"]`).forEach(checkbox => {
-                    checkbox.checked = false;
-                    checkbox.parentElement.classList.remove('completed');
+            if (confirm(`Clear all chores for ${kidId.toUpperCase()}?`)) {
+                document.querySelectorAll(`[data-kid="${kidId}"]`).forEach(cb => {
+                    cb.checked = false;
+                    cb.parentElement.classList.remove('completed');
                 });
                 updateTotals();
-                alert(`🗑️ Cleared ${kidName}'s week!`);
+                alert(`🗑️ ${kidId.toUpperCase()} cleared!`);
             }
         }
         
         function resetAll() {
-            if (confirm('⚠️ Reset EVERYTHING for both kids? This will clear all chores and payment history!')) {
+            if (confirm('⚠️ Reset EVERYTHING?')) {
                 document.querySelectorAll('.chore-checkbox').forEach(cb => {
                     cb.checked = false;
                     cb.parentElement.classList.remove('completed');
                 });
                 kidData = {
                     a1: { cumulative: 0, unpaid: 0, venmo: kidData.a1.venmo, chase: kidData.a1.chase },
-                    a2: { cumulative: 0, unpaid: 0, venmo: kidData.a2.venmo, chase: kidData.a2.chase }
+                    a2: { cumulative: 0, unpaid: 0, venmo: kidData.a2.venmo, chase: kidData.a2.chase },
+                    parentEmail: kidData.parentEmail,
+                    emailEnabled: kidData.emailEnabled
                 };
                 updateTotals();
-                alert('🔄 Everything reset!');
+                alert('🔄 Reset complete!');
             }
         }
         
@@ -736,6 +906,8 @@
             kidData.a1.chase = document.getElementById('a1-chase').value;
             kidData.a2.venmo = document.getElementById('a2-venmo').value;
             kidData.a2.chase = document.getElementById('a2-chase').value;
+            kidData.parentEmail = document.getElementById('parent-email').value;
+            kidData.emailEnabled = document.getElementById('email-enabled').checked;
             saveData();
         }
         
@@ -746,15 +918,14 @@
                 timestamp: new Date().toISOString()
             };
             
-            document.querySelectorAll('.chore-checkbox').forEach(checkbox => {
-                data.checkboxes[checkbox.id] = checkbox.checked;
+            document.querySelectorAll('.chore-checkbox').forEach(cb => {
+                data.checkboxes[cb.id] = cb.checked;
             });
             
             try {
                 localStorage.setItem('choreChartPro', JSON.stringify(data));
-                console.log('✅ Saved to localStorage');
             } catch (e) {
-                console.log('❌ Save failed:', e);
+                console.log('Save failed:', e);
             }
         }
         
@@ -765,23 +936,23 @@
                     const data = JSON.parse(saved);
                     kidData = data.kidData || kidData;
                     
-                    // Load payment info
                     document.getElementById('a1-venmo').value = kidData.a1.venmo || '';
                     document.getElementById('a1-chase').value = kidData.a1.chase || '';
                     document.getElementById('a2-venmo').value = kidData.a2.venmo || '';
                     document.getElementById('a2-chase').value = kidData.a2.chase || '';
+                    document.getElementById('parent-email').value = kidData.parentEmail || '';
+                    document.getElementById('email-enabled').checked = kidData.emailEnabled !== false;
                     
                     setTimeout(() => {
                         Object.keys(data.checkboxes || {}).forEach(id => {
-                            const checkbox = document.getElementById(id);
-                            if (checkbox) checkbox.checked = data.checkboxes[id];
+                            const cb = document.getElementById(id);
+                            if (cb) cb.checked = data.checkboxes[id];
                         });
                         updateTotals();
-                        console.log('✅ Data loaded from', data.timestamp);
                     }, 100);
                 }
             } catch (e) {
-                console.log('❌ Load failed:', e);
+                console.log('Load failed:', e);
             }
         }
         
