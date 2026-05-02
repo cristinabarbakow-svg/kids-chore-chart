@@ -613,13 +613,8 @@
         </div>
     </div>
     
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        // Initialize EmailJS
-        (function(){
-            emailjs.init("RkM2rwcphCAY9iNGN");
-        })();
-        
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js?v=2"></script>
+    <script type="text/javascript">
         const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
         
         const chores = [
@@ -643,55 +638,66 @@
             parentEmail: ''
         };
         
-function sendPaymentEmail(kidName, amount, paymentInfo) {
-    const email = document.getElementById('parent-email').value;
-    
-    console.log('Attempting to send email...');
-    console.log('Email address:', email);
-    
-    if (!email) {
-        alert('Please enter your email address in the Payment Center first!');
-        return;
-    }
-    
-    // Calculate pay period
-    const today = new Date();
-    const dayOfWeek = today.getDay();
-    const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
-    const weekStart = new Date(today);
-    weekStart.setDate(today.getDate() + mondayOffset);
-    const weekEnd = new Date(weekStart);
-    weekEnd.setDate(weekStart.getDate() + 6);
-    
-    const formatDate = (date) => {
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        return months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
-    };
-    
-    const payPeriod = formatDate(weekStart) + ' - ' + formatDate(weekEnd);
-    
-    // Simplified template parameters
-    const templateParams = {
-        to_name: 'Parent',
-        from_name: 'Chore Chart',
-        kid_name: kidName,
-        amount: amount,
-        payment_info: paymentInfo || 'Not set',
-        pay_period: payPeriod,
-        reply_to: email
-    };
-    
-    console.log('Sending with params:', templateParams);
-    
-    // Send email
-    emailjs.send('service_hypg8rj', 'template_ur46k0k', templateParams)
-        .then(function(response) {
-            console.log('✅ SUCCESS!', response);
-        }, function(error) {
-            console.error('❌ FAILED:', error);
-            alert('Email failed: ' + JSON.stringify(error));
+        // Initialize EmailJS after DOM loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize EmailJS v4
+            emailjs.init({
+                publicKey: "RkM2rwcphCAY9iNGN",
+            });
+            console.log('✅ EmailJS v4 initialized');
+            
+            initializeDays();
+            loadData();
+            updateTotals();
         });
-}}
+        
+        function sendPaymentEmail(kidName, amount, paymentInfo) {
+            const email = document.getElementById('parent-email').value;
+            
+            console.log('📧 Attempting to send email...');
+            
+            if (!email) {
+                alert('Please enter your email address in the Payment Center first!');
+                return;
+            }
+            
+            // Calculate pay period
+            const today = new Date();
+            const dayOfWeek = today.getDay();
+            const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+            const weekStart = new Date(today);
+            weekStart.setDate(today.getDate() + mondayOffset);
+            const weekEnd = new Date(weekStart);
+            weekEnd.setDate(weekStart.getDate() + 6);
+            
+            const formatDate = (date) => {
+                const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+            };
+            
+            const payPeriod = `${formatDate(weekStart)} - ${formatDate(weekEnd)}`;
+            
+            const templateParams = {
+                to_email: email,
+                kid_name: kidName,
+                amount: amount,
+                payment_info: paymentInfo || 'Not set',
+                pay_period: payPeriod,
+                date: new Date().toLocaleDateString(),
+                time: new Date().toLocaleTimeString()
+            };
+            
+            console.log('Sending email with params:', templateParams);
+            
+            // Send with v4 SDK
+            emailjs.send('service_hypg8rj', 'template_ur46k0k', templateParams)
+                .then(function(response) {
+                    console.log('✅ EMAIL SENT SUCCESSFULLY!', response);
+                }, function(error) {
+                    console.error('❌ EMAIL FAILED:', error);
+                    alert('Email failed: ' + error.text);
+                });
+        }
         
         function generateDayHTML(day, kidId) {
             const dayId = `${kidId}-${day}`;
@@ -961,12 +967,6 @@ function sendPaymentEmail(kidName, amount, paymentInfo) {
                 console.log('Load failed:', e);
             }
         }
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeDays();
-            loadData();
-            updateTotals();
-        });
     </script>
 </body>
 </html>
