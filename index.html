@@ -615,7 +615,7 @@
     
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        // Initialize EmailJS with your public key
+        // Initialize EmailJS
         (function(){
             emailjs.init("RkM2rwcphCAY9iNGN");
         })();
@@ -646,25 +646,27 @@
         function sendPaymentEmail(kidName, amount, paymentInfo) {
             const email = document.getElementById('parent-email').value;
             
+            console.log('Attempting to send email...');
+            console.log('Email address:', email);
+            console.log('Kid:', kidName);
+            console.log('Amount:', amount);
+            console.log('Payment Info:', paymentInfo);
+            
             if (!email) {
-                console.log('No email address provided');
+                console.log('❌ No email address provided');
+                alert('Please enter your email address in the Payment Center first!');
                 return;
             }
             
-            // Calculate pay period (week start and end dates)
+            // Calculate pay period
             const today = new Date();
-            const dayOfWeek = today.getDay(); // 0 = Sunday, 1 = Monday, etc.
-            
-            // Calculate Monday of current week
+            const dayOfWeek = today.getDay();
             const mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
             const weekStart = new Date(today);
             weekStart.setDate(today.getDate() + mondayOffset);
-            
-            // Calculate Sunday of current week
             const weekEnd = new Date(weekStart);
             weekEnd.setDate(weekStart.getDate() + 6);
             
-            // Format dates
             const formatDate = (date) => {
                 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
                 return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
@@ -682,13 +684,15 @@
                 time: new Date().toLocaleTimeString()
             };
             
-            // Send email using EmailJS
+            console.log('Template params:', templateParams);
+            
+            // Send email
             emailjs.send('service_hypg8rj', 'template_ur46k0k', templateParams)
                 .then(function(response) {
-                    console.log('✅ Email sent successfully!', response.status);
+                    console.log('✅ Email sent successfully!', response);
                 }, function(error) {
                     console.log('❌ Email failed:', error);
-                    alert('Email reminder failed to send. Please check your internet connection.');
+                    alert(`Email send failed: ${error.text || 'Unknown error'}. Check the console (F12) for details.`);
                 });
         }
         
@@ -826,7 +830,6 @@
                 
                 let successMsg = `💰 ${kidName} marked as PAID $${amount.toFixed(2)}!`;
                 successMsg += `\n\nPay Period: ${payPeriod}`;
-                successMsg += `\n\n📧 Email reminder sent!`;
                 if (paymentInfo) {
                     successMsg += `\n\n📱 Payment info: ${paymentInfo}`;
                 }
@@ -882,7 +885,7 @@
                 if (a1Amount > 0) sendPaymentEmail('A1', a1Amount.toFixed(2), kidData.a1.payment);
                 if (a2Amount > 0) sendPaymentEmail('A2', a2Amount.toFixed(2), kidData.a2.payment);
                 
-                alert(`💰 Both kids marked as PAID!\n\nPay Period: ${payPeriod}\nTotal: $${total.toFixed(2)}\n\n📧 Email reminders sent!\n\nCheck your email!`);
+                alert(`💰 Both kids marked as PAID!\n\nPay Period: ${payPeriod}\nTotal: $${total.toFixed(2)}\n\nCheck your email for the reminders!`);
             }
         }
         
